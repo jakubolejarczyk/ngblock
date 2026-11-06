@@ -15,10 +15,26 @@ npx nx test ngblock
 npx nx lint ngblock
 ```
 
+## Storybook
+
+Start the component workbench locally:
+
+```bash
+npx nx storybook ngblock
+```
+
+Then open `http://localhost:4400`. Build a static Storybook site with:
+
+```bash
+npx nx build-storybook ngblock
+```
+
+Button examples are in `packages/ngblock/src/lib/control/button.stories.ts`.
+
 ## Library import
 
 ```ts
-import { Ngblock } from '@org/ngblock';
+import { ButtonComponent } from 'ngblock';
 ```
 
 The workspace has been cleaned up to remove the default generated demo apps and libraries and only keeps the base Angular library you asked for.

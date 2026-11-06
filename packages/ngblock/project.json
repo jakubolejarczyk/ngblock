@@ -9,6 +9,7 @@
     "build": {
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "defaultConfiguration": "production",
       "options": {
         "project": "packages/ngblock/ng-package.json",
         "tsConfig": "packages/ngblock/tsconfig.lib.json"
@@ -18,8 +19,41 @@
           "tsConfig": "packages/ngblock/tsconfig.lib.prod.json"
         },
         "development": {}
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "continuous": true,
+      "readyWhen": {
+        "port": "{env.SBCONFIG_PORT ?? options.port ?? 9009}",
+        "host": "{env.SBCONFIG_HOSTNAME ?? options.host ?? localhost}"
       },
-      "defaultConfiguration": "production"
+      "options": {
+        "port": 4400,
+        "configDir": "packages/ngblock/.storybook",
+        "browserTarget": "ngblock:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/ngblock",
+        "configDir": "packages/ngblock/.storybook",
+        "browserTarget": "ngblock:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }
