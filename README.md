@@ -1,104 +1,56 @@
 # ngblock
 
-This is a minimal Nx Angular workspace containing a single Angular library named `ngblock`.
+An Angular UI component library.
 
-## Project
+## Components
 
-- `ngblock` — the library in `packages/ngblock`
+| Group | Component | Type | Selector |
+| --- | --- | --- | --- |
+| Control / Button | Button text | `control` | `ngb-button-text-control` |
 
-## Getting started
+Component files follow `<component-name>.<type>.<extension>`. For example:
+`packages/ngblock/src/lib/control/button/button-text/button-text.control.ts`.
+
+## Use
+
+Install the package and import the standalone component:
 
 ```bash
-npm install
-npx nx build ngblock
-npx nx test ngblock
-npx nx lint ngblock
+npm install ngblock
 ```
 
-## Storybook
+```ts
+import { Component } from '@angular/core';
+import { ButtonTextComponent } from 'ngblock';
 
-Start the component workbench locally:
+@Component({
+  selector: 'app-example',
+  imports: [ButtonTextComponent],
+  template: `
+    <ngb-button-text-control (click)="save()">Save</ngb-button-text-control>
+    <ngb-button-text-control type="submit" [disabled]="isSaving">
+      Submit
+    </ngb-button-text-control>
+  `,
+})
+export class ExampleComponent {
+  isSaving = false;
+
+  save(): void {}
+}
+```
+
+The button projects its text content and supports native `type` and `disabled`
+inputs. It uses the browser's default button styling.
+
+## Develop
 
 ```bash
+npx nx test ngblock
+npx nx lint ngblock
+npx nx build ngblock
 npx nx storybook ngblock
 ```
 
-Then open `http://localhost:4400`. Build a static Storybook site with:
-
-```bash
-npx nx build-storybook ngblock
-```
-
-Button examples are in `packages/ngblock/src/lib/control/button.stories.ts`.
-
-## Library import
-
-```ts
-import { ButtonComponent } from 'ngblock';
-```
-
-The workspace has been cleaned up to remove the default generated demo apps and libraries and only keeps the base Angular library you asked for.
-
-## 🎯 Adding New Features
-
-### Generate a new Angular application:
-
-```bash
-npx nx g @nx/angular:app my-app
-```
-
-### Generate a new Angular library:
-
-```bash
-npx nx g @nx/angular:lib my-lib
-```
-
-### Generate a new Angular component:
-
-```bash
-npx nx g @nx/angular:component my-component --project=my-lib
-```
-
-### Generate a new API library:
-
-```bash
-npx nx g @nx/node:lib my-api-lib
-```
-
-You can use `npx nx list` to see all available plugins and `npx nx list <plugin-name>` to see all generators for a specific plugin.
-
-## Nx Cloud
-
-Nx Cloud ensures a [fast and scalable CI](https://nx.dev/nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/docs/features/ci-features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/docs/features/ci-features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/docs/features/ci-features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/docs/features/ci-features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/docs/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## 🔗 Learn More
-
-- [Nx Documentation](https://nx.dev/docs)
-- [Angular Monorepo Tutorial](https://nx.dev/docs/getting-started/tutorials/angular-monorepo-tutorial)
-- [Module Boundaries](https://nx.dev/docs/features/enforce-module-boundaries)
-- [Docker Integration](https://nx.dev/docs/guides/nx-release/release-docker-images)
-- [Playwright Testing](https://nx.dev/docs/technologies/test-tools/playwright)
-- [Vite with Angular](https://nx.dev/docs/technologies/build-tools/vite)
-- [Nx Cloud](https://nx.dev/nx-cloud)
-- [Releasing Packages](https://nx.dev/docs/features/manage-releases)
-
-## 💬 Community
-
-Join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [X (Twitter)](https://twitter.com/nxdevtools)
-- [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [YouTube](https://www.youtube.com/@nxdevtools)
-- [Blog](https://nx.dev/blog)
+Storybook runs at `http://localhost:4400`. Build its static site with
+`npx nx build-storybook ngblock`.

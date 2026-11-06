@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ButtonComponent } from './button';
+import { ButtonTextComponent } from './button-text.control';
 
-type ButtonStory = ButtonComponent & { label: string };
+type ButtonTextStory = ButtonTextComponent & { label: string };
 
-const meta: Meta<ButtonStory> = {
-  title: 'Control/Button',
-  component: ButtonComponent,
+const meta: Meta<ButtonTextStory> = {
+  title: 'Control/Button/Text',
+  component: ButtonTextComponent,
   tags: ['autodocs'],
   argTypes: {
     type: {
@@ -27,12 +27,12 @@ const meta: Meta<ButtonStory> = {
   render: (args) => ({
     props: args,
     template:
-      '<ngb-button [type]="type" [disabled]="disabled">{{ label }}</ngb-button>',
+      '<ngb-button-text-control [type]="type" [disabled]="disabled">{{ label }}</ngb-button-text-control>',
   }),
 };
 
 export default meta;
-type Story = StoryObj<ButtonStory>;
+type Story = StoryObj<ButtonTextStory>;
 
 export const Default: Story = {};
 

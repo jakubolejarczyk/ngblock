@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
-  selector: 'ngb-button',
+  selector: 'ngb-button-text-control',
   imports: [],
-  templateUrl: './button.html',
-  styleUrl: './button.css',
+  templateUrl: './button-text.control.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent {
+export class ButtonTextComponent {
   readonly type = input<HTMLButtonElement['type']>('button');
   readonly disabled = input(false);
 }

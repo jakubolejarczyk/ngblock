@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonComponent } from './button';
+import { ButtonTextComponent } from './button-text.control';
 
 @Component({
-  selector: 'ngb-button-host',
-  imports: [ButtonComponent],
-  template: '<ngb-button>Save</ngb-button>',
+  selector: 'ngb-button-text-host',
+  imports: [ButtonTextComponent],
+  template: '<ngb-button-text-control>Save</ngb-button-text-control>',
 })
-class ButtonHost {}
+class ButtonTextHost {}
 
-describe('ButtonComponent', () => {
-  let fixture: ComponentFixture<ButtonHost>;
+describe('ButtonTextComponent', () => {
+  let fixture: ComponentFixture<ButtonTextHost>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonHost],
+      imports: [ButtonTextHost],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ButtonHost);
+    fixture = TestBed.createComponent(ButtonTextHost);
   });
 
   it('projects its label into a native button', async () => {
@@ -31,7 +31,7 @@ describe('ButtonComponent', () => {
   });
 
   it('defaults to button type and can be disabled', () => {
-    const buttonFixture = TestBed.createComponent(ButtonComponent);
+    const buttonFixture = TestBed.createComponent(ButtonTextComponent);
     buttonFixture.componentRef.setInput('disabled', true);
     buttonFixture.detectChanges();
 
@@ -43,7 +43,7 @@ describe('ButtonComponent', () => {
   });
 
   it('supports a custom native button type', () => {
-    const buttonFixture = TestBed.createComponent(ButtonComponent);
+    const buttonFixture = TestBed.createComponent(ButtonTextComponent);
     buttonFixture.componentRef.setInput('type', 'submit');
     buttonFixture.detectChanges();
 

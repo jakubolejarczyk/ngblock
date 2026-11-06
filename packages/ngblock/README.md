@@ -1,32 +1,33 @@
 # ngblock
 
-`ngblock` is an Angular UI library. The current release includes a standalone
-button control.
+## Components
 
-## Requirements
+| Group | Component | Type | Selector |
+| --- | --- | --- | --- |
+| Control / Button | Button text | `control` | `ngb-button-text-control` |
 
-- Angular `^22.2.0`
+The component is in `src/lib/control/button/button-text/`. Component files use
+the `<component-name>.<type>.<extension>` naming convention, for example
+`button-text.control.ts` and `button-text.control.html`.
 
-## Install
+## Use
 
 ```bash
 npm install ngblock
 ```
 
-## Button control
-
-Import `ButtonComponent` into the standalone component that uses it:
+Import `ButtonTextComponent` into the standalone component that uses it:
 
 ```ts
 import { Component } from '@angular/core';
-import { ButtonComponent } from 'ngblock';
+import { ButtonTextComponent } from 'ngblock';
 
 @Component({
   selector: 'app-example',
-  imports: [ButtonComponent],
+  imports: [ButtonTextComponent],
   template: `
-    <ngb-button (click)="save()">Save</ngb-button>
-    <ngb-button type="submit" [disabled]="isSaving">Submit</ngb-button>
+    <ngb-button-text-control (click)="save()">Save</ngb-button-text-control>
+    <ngb-button-text-control type="submit" [disabled]="isSaving">Submit</ngb-button-text-control>
   `,
 })
 export class ExampleComponent {
@@ -38,24 +39,6 @@ export class ExampleComponent {
 }
 ```
 
-`ButtonComponent` renders a native `<button>` and projects its content as the
-button label. Its selector is `ngb-button`.
-
-| Input | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Native button type. |
-| `disabled` | `boolean` | `false` | Disables the native button. |
-
-The control inherits its font and text color from its context, with basic
-padding, border, focus-visible, and disabled styles. Use the native `click`
-event to handle activation.
-
-## Develop
-
-From the Nx workspace root:
-
-```bash
-npx nx build ngblock
-npx nx test ngblock
-npx nx lint ngblock
-```
+`ButtonTextComponent` wraps a native button and projects its text content. It
+supports native `type` and `disabled` inputs and intentionally uses the
+browser's default styling.
