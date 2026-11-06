@@ -5,10 +5,11 @@
 | Group | Component | Type | Selector |
 | --- | --- | --- | --- |
 | Control / Button | Button text | `control` | `ngb-button-text-control` |
+| Control / Button | Button icon | `control` | `ngb-button-icon-control` |
 
-The component is in `src/lib/control/button/button-text/`. Component files use
-the `<component-name>.<type>.<extension>` naming convention, for example
-`button-text.control.ts` and `button-text.control.html`.
+The button components are in `src/lib/control/button/`. Component files use the
+`<component-name>.<type>.<extension>` naming convention, for example
+`button-text.control.ts` and `button-icon.control.ts`.
 
 ## Use
 
@@ -16,24 +17,33 @@ the `<component-name>.<type>.<extension>` naming convention, for example
 npm install ngblock
 ```
 
-Import `ButtonTextComponent` into the standalone component that uses it:
+Import the standalone components you use:
 
 ```ts
 import { Component } from '@angular/core';
-import { ButtonTextComponent } from 'ngblock';
+import { ButtonIconComponent, ButtonTextComponent } from 'ngblock';
 
 @Component({
   selector: 'app-example',
-  imports: [ButtonTextComponent],
+  imports: [ButtonTextComponent, ButtonIconComponent],
   template: `
     <ngb-button-text-control (buttonClick)="save($event)">Save</ngb-button-text-control>
     <ngb-button-text-control type="submit" [disabled]="isSaving">Submit</ngb-button-text-control>
+    <ngb-button-icon-control
+      icon="favorite"
+      ariaLabel="Add to favorites"
+      (buttonClick)="addToFavorites($event)"
+    />
   `,
 })
 export class ExampleComponent {
   isSaving = false;
 
   save(event: MouseEvent): void {
+    // Perform an operation using the click event.
+  }
+
+  addToFavorites(event: MouseEvent): void {
     // Perform an operation using the click event.
   }
 }
@@ -50,3 +60,33 @@ supports these inputs and output:
 
 `buttonClick` emits the native click event. The component intentionally uses
 the browser's default button styling.
+
+### Button icon
+
+The icon button renders one of the supported icons selected through the `icon`
+input. TypeScript exposes the `ButtonIcon` union for editor autocomplete:
+
+```html
+<ngb-button-icon-control
+  icon="favorite"
+  ariaLabel="Add to favorites"
+  (buttonClick)="addToFavorites($event)"
+/>
+```
+
+Available values: `add`, `check`, `close`, `delete`, `edit`, `favorite`,
+`home`, `menu`, `remove`, and `search`.
+
+| Name | Kind | Type | Default |
+| --- | --- | --- | --- |
+| `icon` | Input | `ButtonIcon` | Required |
+| `ariaLabel` | Input | `string` | Required |
+| `type` | Input | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `disabled` | Input | `boolean` | `false` |
+| `buttonClick` | Output | `MouseEvent` | — |
+
+`ButtonIcon` is exported from `ngblock` and is a union of the available icon
+names, so editors can suggest valid values: `add`, `check`, `close`, `delete`,
+`edit`, `favorite`, `home`, `menu`, `remove`, and `search`. The icon is hidden
+from assistive technology; `ariaLabel` provides the button's accessible name.
+The component uses the browser's default button styling.
