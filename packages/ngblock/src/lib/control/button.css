@@ -1,0 +1,23 @@
+:host {
+  display: inline-block;
+}
+
+.ngblock-button {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.ngblock-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.ngblock-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

@@ -2,7 +2,7 @@
   "name": "ngblock",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/ngblock/src",
-  "prefix": "lib",
+  "prefix": "ngb",
   "projectType": "library",
   "tags": [],
   "targets": {

@@ -1,1 +1,1 @@
-export * from './lib/ngblock/ngblock';
+export * from './lib/control/button';
