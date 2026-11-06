@@ -1,0 +1,10 @@
+{
+  "name": "ngblock",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ngblock/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project ngblock --web",
+  "targets": {}
+}
