@@ -5,6 +5,21 @@
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project ngblock --web",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "packages/ngblock/ng-package.json",
+        "tsConfig": "packages/ngblock/tsconfig.lib.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ngblock/tsconfig.lib.prod.json"
+        },
+        "development": {}
+      },
+      "defaultConfiguration": "production"
+    }
+  }
 }

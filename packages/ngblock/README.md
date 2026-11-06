@@ -1,7 +1,24 @@
 # ngblock
 
-This library was generated with [Nx](https://nx.dev).
+An Angular library packaged in Angular Package Format for use in Angular applications.
 
-## Running unit tests
+## Install
 
-Run `nx test ngblock` to execute the unit tests.
+```bash
+npm install ngblock
+```
+
+## Use
+
+```ts
+import { Ngblock } from 'ngblock';
+```
+
+## Develop
+
+From the Nx workspace root:
+
+```bash
+npx nx build ngblock
+npx nx test ngblock
+```
