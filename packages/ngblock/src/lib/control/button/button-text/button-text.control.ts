@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 
 @Component({
   selector: 'ngb-button-text-control',
@@ -9,4 +14,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 export class ButtonTextComponent {
   readonly type = input<HTMLButtonElement['type']>('button');
   readonly disabled = input(false);
+  readonly buttonClick = output<MouseEvent>();
+
+  onClick(event: MouseEvent): void {
+    this.buttonClick.emit(event);
+  }
 }

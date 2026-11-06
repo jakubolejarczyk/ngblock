@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { vi } from 'vitest';
 import { ButtonTextComponent } from './button-text.control';
 
 @Component({
@@ -51,5 +52,21 @@ describe('ButtonTextComponent', () => {
       buttonFixture.nativeElement.querySelector('button');
 
     expect(button.type).toBe('submit');
+  });
+
+  it('emits the native click event', () => {
+    const buttonFixture = TestBed.createComponent(ButtonTextComponent);
+    const clickHandler = vi.fn();
+    buttonFixture.componentInstance.buttonClick.subscribe(clickHandler);
+    buttonFixture.detectChanges();
+
+    const button: HTMLButtonElement =
+      buttonFixture.nativeElement.querySelector('button');
+    button.click();
+
+    expect(clickHandler).toHaveBeenCalledOnce();
+    expect(clickHandler).toHaveBeenCalledWith(
+      expect.objectContaining({ target: button }),
+    );
   });
 });

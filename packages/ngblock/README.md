@@ -26,19 +26,27 @@ import { ButtonTextComponent } from 'ngblock';
   selector: 'app-example',
   imports: [ButtonTextComponent],
   template: `
-    <ngb-button-text-control (click)="save()">Save</ngb-button-text-control>
+    <ngb-button-text-control (buttonClick)="save($event)">Save</ngb-button-text-control>
     <ngb-button-text-control type="submit" [disabled]="isSaving">Submit</ngb-button-text-control>
   `,
 })
 export class ExampleComponent {
   isSaving = false;
 
-  save(): void {
-    // Perform the save action.
+  save(event: MouseEvent): void {
+    // Perform an operation using the click event.
   }
 }
 ```
 
 `ButtonTextComponent` wraps a native button and projects its text content. It
-supports native `type` and `disabled` inputs and intentionally uses the
-browser's default styling.
+supports these inputs and output:
+
+| Name | Kind | Type | Default |
+| --- | --- | --- | --- |
+| `type` | Input | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `disabled` | Input | `boolean` | `false` |
+| `buttonClick` | Output | `MouseEvent` | — |
+
+`buttonClick` emits the native click event. The component intentionally uses
+the browser's default button styling.
