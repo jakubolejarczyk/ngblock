@@ -1,7 +1,7 @@
-<button
+<ngb-button-base-control
   [type]="type()"
   [disabled]="disabled()"
-  (click)="onClick($event)"
+  (clicked)="clicked.emit($event)"
 >
   <ng-content />
-</button>
+</ngb-button-base-control>

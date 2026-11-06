@@ -1,8 +1,8 @@
-<button
+<ngb-button-base-control
   [type]="type()"
   [disabled]="disabled()"
-  [attr.aria-label]="ariaLabel()"
-  (click)="onClick($event)"
+  [ariaLabel]="ariaLabel()"
+  (clicked)="clicked.emit($event)"
 >
-  <span aria-hidden="true">{{ iconGlyph() }}</span>
-</button>
+  <ngb-icon [glyph]="iconGlyph()" />
+</ngb-button-base-control>

@@ -4,19 +4,16 @@ import {
   input,
   output,
 } from '@angular/core';
+import { ButtonBaseComponent } from '../button-base/button-base.control';
 
 @Component({
   selector: 'ngb-button-text-control',
-  imports: [],
+  imports: [ButtonBaseComponent],
   templateUrl: './button-text.control.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonTextComponent {
   readonly type = input<HTMLButtonElement['type']>('button');
   readonly disabled = input(false);
-  readonly buttonClick = output<MouseEvent>();
-
-  onClick(event: MouseEvent): void {
-    this.buttonClick.emit(event);
-  }
+  readonly clicked = output<MouseEvent>();
 }

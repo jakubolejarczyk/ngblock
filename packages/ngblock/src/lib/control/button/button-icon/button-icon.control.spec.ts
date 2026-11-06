@@ -39,7 +39,7 @@ describe('ButtonIconComponent', () => {
 
   it('emits the native click event', () => {
     const clickHandler = vi.fn();
-    fixture.componentInstance.buttonClick.subscribe(clickHandler);
+    fixture.componentInstance.clicked.subscribe(clickHandler);
     fixture.detectChanges();
 
     const button: HTMLButtonElement =

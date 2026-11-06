@@ -57,7 +57,7 @@ describe('ButtonTextComponent', () => {
   it('emits the native click event', () => {
     const buttonFixture = TestBed.createComponent(ButtonTextComponent);
     const clickHandler = vi.fn();
-    buttonFixture.componentInstance.buttonClick.subscribe(clickHandler);
+    buttonFixture.componentInstance.clicked.subscribe(clickHandler);
     buttonFixture.detectChanges();
 
     const button: HTMLButtonElement =
