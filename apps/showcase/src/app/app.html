@@ -9,8 +9,11 @@
   </ngb-dropdown-menu>
 </header>
 
-<main>
+<main class="showcase-shell" [attr.data-theme]="theme()">
   <ngb-container-layout size="large">
+    <ngb-button-text-control class="theme-toggle" (clicked)="toggleTheme()">
+      Use {{ theme() === 'ocean' ? 'default' : 'ocean' }} palette
+    </ngb-button-text-control>
     <section class="hero">
       <ngb-breadcrumb-menu
         [items]="[

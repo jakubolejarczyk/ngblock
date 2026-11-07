@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 @Component({
   selector: 'ngb-confirm-dialog-overlay',
   templateUrl: './confirm-dialog.overlay.html',
-  styleUrl: '../dialog/dialog.overlay.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmDialogOverlayComponent {

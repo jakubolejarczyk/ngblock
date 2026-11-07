@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Centralize component styling in the opt-in theme and expose customizable CSS
+  design tokens.
+- Expand the component API reference to cover the full exported catalog.
+
 ## 0.1.0
 
 - Expand the standalone component catalog across overlays, messages, menus,

@@ -9,17 +9,44 @@
   --ngb-color-primary: #4f46e5;
   --ngb-color-primary-hover: #4338ca;
   --ngb-color-primary-soft: #eef2ff;
+  --ngb-color-on-primary: #fff;
+  --ngb-color-canvas-subtle: #f8fafc;
+  --ngb-color-text-subtle: #475569;
+  --ngb-color-placeholder: #94a3b8;
+  --ngb-color-disabled: #f1f5f9;
+  --ngb-color-info: #1e40af;
+  --ngb-color-info-soft: #eff6ff;
+  --ngb-color-info-border: #bfdbfe;
   --ngb-color-success: #15803d;
   --ngb-color-success-soft: #f0fdf4;
+  --ngb-color-success-border: #bbf7d0;
   --ngb-color-warning: #a16207;
   --ngb-color-warning-soft: #fffbeb;
+  --ngb-color-warning-border: #fde68a;
   --ngb-color-danger: #b91c1c;
   --ngb-color-danger-soft: #fef2f2;
+  --ngb-color-danger-border: #fecaca;
+  --ngb-color-rating: #d97706;
+  --ngb-color-table-border: #e8edf4;
+  --ngb-color-row-hover: #f8faff;
+  --ngb-color-avatar: #e0e7ff;
+  --ngb-color-avatar-text: #4338ca;
+  --ngb-color-empty-state-border: #cbd5e1;
+  --ngb-color-carousel-heading: #312e81;
+  --ngb-color-tooltip: #0f172a;
+  --ngb-color-progress-track: #e8edf5;
+  --ngb-color-dialog-backdrop: rgb(0 0 0 / 0.5);
+  --ngb-color-drawer-backdrop: rgb(0 0 0 / 0.45);
+  --ngb-color-overlay-divider: rgb(255 255 255 / 0.35);
   --ngb-radius-sm: 0.5rem;
   --ngb-radius-md: 0.75rem;
   --ngb-radius-lg: 1rem;
   --ngb-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06);
   --ngb-shadow-md: 0 12px 32px rgb(15 23 42 / 0.14);
+  --ngb-shadow-dialog: 0 0.5rem 2rem rgb(0 0 0 / 0.25);
+  --ngb-shadow-drawer: 0 0 1.5rem rgb(0 0 0 / 0.2);
+  --ngb-gradient-carousel: linear-gradient(135deg, #eef2ff, #f8fafc 65%);
+  --ngb-gradient-progress: linear-gradient(90deg, #6366f1, #8b5cf6);
   --ngb-focus-ring: 0 0 0 3px rgb(79 70 229 / 0.25);
 }
 
@@ -166,7 +193,7 @@ ngb-button-group-control button:first-child,
 ngb-split-button-control > div > button:first-child {
   border-color: var(--ngb-color-primary);
   background: var(--ngb-color-primary);
-  color: #fff;
+  color: var(--ngb-color-on-primary);
 }
 
 ngb-button-text-control button:hover:not(:disabled),
@@ -206,7 +233,7 @@ ngb-rating-form button {
   padding-inline: 0.25rem;
   border: 0;
   background: transparent;
-  color: #d97706;
+  color: var(--ngb-color-rating);
   font-size: 1.4rem;
 }
 
@@ -324,7 +351,7 @@ ngb-password-form input::placeholder,
 ngb-number-form input::placeholder,
 ngb-textarea-form textarea::placeholder,
 ngb-autocomplete-form input::placeholder {
-  color: #94a3b8;
+  color: var(--ngb-color-placeholder);
 }
 
 ngb-text-field-form input:disabled,
@@ -335,7 +362,7 @@ ngb-select-form select:disabled,
 ngb-multi-select-form select:disabled,
 ngb-textarea-form textarea:disabled,
 ngb-file-upload-form input:disabled {
-  background: #f1f5f9;
+  background: var(--ngb-color-disabled);
   color: var(--ngb-color-muted);
   cursor: not-allowed;
 }
@@ -460,40 +487,40 @@ ngb-toast-message > section {
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.85rem 1rem;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--ngb-color-info-border);
   border-radius: var(--ngb-radius-md);
-  background: #eff6ff;
-  color: #1e40af;
+  background: var(--ngb-color-info-soft);
+  color: var(--ngb-color-info);
 }
 
 ngb-alert-message [role='status'][aria-live='polite'] {
-  border-color: #bfdbfe;
-  background: #eff6ff;
-  color: #1e40af;
+  border-color: var(--ngb-color-info-border);
+  background: var(--ngb-color-info-soft);
+  color: var(--ngb-color-info);
 }
 
 ngb-alert-message [role='status'][aria-live='assertive'],
 ngb-alert-message [role='alert'][aria-live='assertive'],
 ngb-alert-message [role='alert'] {
-  border-color: #fecaca;
+  border-color: var(--ngb-color-danger-border);
   background: var(--ngb-color-danger-soft);
   color: var(--ngb-color-danger);
 }
 
 ngb-toast-message > section[data-type='success'] {
-  border-color: #bbf7d0;
+  border-color: var(--ngb-color-success-border);
   background: var(--ngb-color-success-soft);
   color: var(--ngb-color-success);
 }
 
 ngb-toast-message > section[data-type='warning'] {
-  border-color: #fde68a;
+  border-color: var(--ngb-color-warning-border);
   background: var(--ngb-color-warning-soft);
   color: var(--ngb-color-warning);
 }
 
 ngb-toast-message > section[data-type='error'] {
-  border-color: #fecaca;
+  border-color: var(--ngb-color-danger-border);
   background: var(--ngb-color-danger-soft);
   color: var(--ngb-color-danger);
 }
@@ -515,26 +542,26 @@ ngb-chip-message > span {
   padding: 0.25rem 0.65rem;
   border: 1px solid var(--ngb-color-border);
   border-radius: 999px;
-  background: #f8fafc;
-  color: #475569;
+  background: var(--ngb-color-canvas-subtle);
+  color: var(--ngb-color-text-subtle);
   font-size: 0.75rem;
   font-weight: 650;
 }
 
 ngb-badge-message [data-tone='success'] {
-  border-color: #bbf7d0;
+  border-color: var(--ngb-color-success-border);
   background: var(--ngb-color-success-soft);
   color: var(--ngb-color-success);
 }
 
 ngb-badge-message [data-tone='warning'] {
-  border-color: #fde68a;
+  border-color: var(--ngb-color-warning-border);
   background: var(--ngb-color-warning-soft);
   color: var(--ngb-color-warning);
 }
 
 ngb-badge-message [data-tone='danger'] {
-  border-color: #fecaca;
+  border-color: var(--ngb-color-danger-border);
   background: var(--ngb-color-danger-soft);
   color: var(--ngb-color-danger);
 }
@@ -563,12 +590,12 @@ ngb-table-data caption {
 ngb-table-data th,
 ngb-table-data td {
   padding: 0.75rem 0.85rem;
-  border-bottom: 1px solid #e8edf4;
+  border-bottom: 1px solid var(--ngb-color-table-border);
 }
 
 ngb-table-data th {
-  background: #f8fafc;
-  color: #475569;
+  background: var(--ngb-color-canvas-subtle);
+  color: var(--ngb-color-text-subtle);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.045em;
@@ -576,7 +603,7 @@ ngb-table-data th {
 }
 
 ngb-table-data tbody tr:hover {
-  background: #f8faff;
+  background: var(--ngb-color-row-hover);
 }
 
 ngb-avatar-data [role='img'],
@@ -586,10 +613,10 @@ ngb-avatar-data img {
   height: 2.75rem;
   place-items: center;
   overflow: hidden;
-  border: 2px solid #fff;
+  border: 2px solid var(--ngb-color-canvas);
   border-radius: 50%;
-  background: #e0e7ff;
-  color: #4338ca;
+  background: var(--ngb-color-avatar);
+  color: var(--ngb-color-avatar-text);
   font-size: 0.8rem;
   font-weight: 700;
   object-fit: cover;
@@ -598,9 +625,9 @@ ngb-avatar-data img {
 
 ngb-empty-state-data section {
   padding: 1.25rem;
-  border: 1px dashed #cbd5e1;
+  border: 1px dashed var(--ngb-color-empty-state-border);
   border-radius: var(--ngb-radius-md);
-  background: #f8fafc;
+  background: var(--ngb-color-canvas-subtle);
   text-align: center;
 }
 
@@ -637,7 +664,7 @@ ngb-carousel-data section {
   padding: 1.25rem;
   border: 1px solid var(--ngb-color-border);
   border-radius: var(--ngb-radius-lg);
-  background: linear-gradient(135deg, #eef2ff, #f8fafc 65%);
+  background: var(--ngb-gradient-carousel);
 }
 
 ngb-carousel-data article {
@@ -646,7 +673,7 @@ ngb-carousel-data article {
 
 ngb-carousel-data h2 {
   margin: 0.5rem 0;
-  color: #312e81;
+  color: var(--ngb-color-carousel-heading);
   font-size: 1.25rem;
 }
 
@@ -729,7 +756,7 @@ ngb-breadcrumb-menu li {
 
 ngb-breadcrumb-menu li + li::before {
   margin-inline-end: 0.5rem;
-  color: #94a3b8;
+  color: var(--ngb-color-placeholder);
   content: '/';
 }
 
@@ -844,10 +871,10 @@ ngb-split-button-control > div > button:first-child {
 }
 
 ngb-split-button-control > div > button:nth-child(2) {
-  border-inline-start: 1px solid rgb(255 255 255 / 0.35);
+  border-inline-start: 1px solid var(--ngb-color-overlay-divider);
   border-radius: 0 var(--ngb-radius-sm) var(--ngb-radius-sm) 0;
   background: var(--ngb-color-primary);
-  color: #fff;
+  color: var(--ngb-color-on-primary);
 }
 
 ngb-split-button-control [role='menu'] {
@@ -885,8 +912,8 @@ ngb-tooltip-overlay [role='tooltip'] {
   padding: 0.4rem 0.65rem;
   transform: translateX(-50%);
   border-radius: var(--ngb-radius-sm);
-  background: #0f172a;
-  color: #fff;
+  background: var(--ngb-color-tooltip);
+  color: var(--ngb-color-on-primary);
   font-size: 0.75rem;
   box-shadow: var(--ngb-shadow-md);
 }
@@ -934,17 +961,173 @@ ngb-progress-message progress {
 
 ngb-progress-message progress::-webkit-progress-bar {
   border-radius: 999px;
-  background: #e8edf5;
+  background: var(--ngb-color-progress-track);
 }
 
 ngb-progress-message progress::-webkit-progress-value {
   border-radius: 999px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  background: var(--ngb-gradient-progress);
 }
 
 ngb-progress-message progress::-moz-progress-bar {
   border-radius: 999px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  background: var(--ngb-gradient-progress);
+}
+
+ngb-container-layout .container {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+ngb-container-layout .container[data-size='small'] {
+  max-width: 40rem;
+}
+
+ngb-container-layout .container[data-size='medium'] {
+  max-width: 56rem;
+}
+
+ngb-container-layout .container[data-size='large'] {
+  max-width: 72rem;
+}
+
+ngb-container-layout .container[data-size='full'] {
+  max-width: none;
+}
+
+ngb-stack-layout .stack {
+  display: flex;
+  gap: var(--ngb-stack-gap, 1rem);
+}
+
+ngb-stack-layout .stack[data-direction='horizontal'] {
+  flex-direction: row;
+  align-items: center;
+}
+
+ngb-stack-layout .stack[data-direction='vertical'] {
+  flex-direction: column;
+}
+
+ngb-toolbar-layout div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+ngb-spinner-message .spinner {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+ngb-spinner-message .spinner > span {
+  width: 100%;
+  height: 100%;
+  border: 0.2rem solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: ngb-spin 0.7s linear infinite;
+}
+
+@keyframes ngb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+ngb-skeleton-message .skeleton {
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+ngb-skeleton-message .skeleton > span {
+  display: block;
+  height: 1rem;
+  background: color-mix(
+    in srgb,
+    var(--ngb-color-text) 12%,
+    var(--ngb-color-canvas)
+  );
+  border-radius: 0.25rem;
+}
+
+ngb-skeleton-message .skeleton > span:last-child {
+  width: 70%;
+}
+
+ngb-dialog-overlay,
+ngb-confirm-dialog-overlay {
+  display: contents;
+}
+
+ngb-dialog-overlay .dialog-backdrop,
+ngb-confirm-dialog-overlay .dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--ngb-color-dialog-backdrop);
+}
+
+ngb-drawer-overlay .backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--ngb-color-drawer-backdrop);
+}
+
+ngb-dialog-overlay section[role='dialog'],
+ngb-confirm-dialog-overlay section[role='alertdialog'] {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  z-index: 1001;
+  transform: translate(-50%, -50%);
+  max-width: min(32rem, 100%);
+  padding: 1.5rem;
+  background: var(--ngb-color-canvas);
+  color: var(--ngb-color-text);
+  box-shadow: var(--ngb-shadow-dialog);
+}
+
+ngb-drawer-overlay aside {
+  position: fixed;
+  inset-block: 0;
+  z-index: 1001;
+  width: min(24rem, 90vw);
+  padding: 1.25rem;
+  overflow: auto;
+  background: var(--ngb-color-canvas);
+  color: var(--ngb-color-text);
+  box-shadow: var(--ngb-shadow-drawer);
+}
+
+ngb-drawer-overlay aside[data-side='left'] {
+  inset-inline-start: 0;
+}
+
+ngb-drawer-overlay aside[data-side='right'] {
+  inset-inline-end: 0;
+}
+
+ngb-drawer-overlay header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ngb-spinner-message .spinner > span {
+    animation-duration: 2s;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

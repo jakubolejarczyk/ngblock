@@ -3,6 +3,22 @@
   min-height: 100vh;
 }
 
+.showcase-shell {
+  background: var(--ngb-color-canvas);
+  color: var(--ngb-color-text);
+}
+
+.showcase-shell[data-theme='ocean'] {
+  --ngb-color-canvas: #f0fdfa;
+  --ngb-color-text: #134e4a;
+  --ngb-color-muted: #527a75;
+  --ngb-color-border: #99f6e4;
+  --ngb-color-primary: #0f766e;
+  --ngb-color-primary-hover: #115e59;
+  --ngb-color-primary-soft: #ccfbf1;
+  --ngb-focus-ring: 0 0 0 3px rgb(15 118 110 / 0.25);
+}
+
 .site-header {
   display: flex;
   align-items: center;

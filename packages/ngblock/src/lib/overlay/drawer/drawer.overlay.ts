@@ -9,7 +9,6 @@ import {
 @Component({
   selector: 'ngb-drawer-overlay',
   templateUrl: './drawer.overlay.html',
-  styleUrl: './drawer.overlay.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DrawerOverlayComponent {

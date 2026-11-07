@@ -41,8 +41,34 @@ Add the optional component theme to your Angular application's global styles:
 
 The theme is opt-in and styles component hosts and their native controls. It
 does not set page-wide typography or backgrounds. Customize its `--ngb-*` CSS
-variables after the import. See [PUBLISHING.md](./PUBLISHING.md) for release
-instructions.
+variables after the import, globally or on an element wrapping your components.
+For example:
+
+```css
+:root {
+  --ngb-color-primary: #0f766e;
+  --ngb-color-primary-hover: #115e59;
+  --ngb-color-primary-soft: #ccfbf1;
+  --ngb-color-canvas: #f0fdfa;
+  --ngb-color-text: #134e4a;
+  --ngb-color-border: #99f6e4;
+  --ngb-focus-ring: 0 0 0 3px rgb(15 118 110 / 0.25);
+}
+```
+
+The palette includes semantic tokens for primary, success, warning, danger,
+info, muted text, borders, overlays, focus, radii, shadows, and component
+surfaces. The showcase's **Use ocean palette** button demonstrates scoping
+overrides to one application region. See [PUBLISHING.md](./PUBLISHING.md) for
+release instructions.
+
+| Category          | CSS variables                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base              | `--ngb-font-family`, `--ngb-color-canvas`, `--ngb-color-text`, `--ngb-color-muted`, `--ngb-color-border`                                                                                                                                                                                                                                                                                                                                                  |
+| Primary           | `--ngb-color-primary`, `--ngb-color-primary-hover`, `--ngb-color-primary-soft`, `--ngb-color-on-primary`, `--ngb-focus-ring`                                                                                                                                                                                                                                                                                                                              |
+| Status            | `--ngb-color-info*`, `--ngb-color-success*`, `--ngb-color-warning*`, `--ngb-color-danger*`                                                                                                                                                                                                                                                                                                                                                                |
+| Component colors  | `--ngb-color-canvas-subtle`, `--ngb-color-text-subtle`, `--ngb-color-placeholder`, `--ngb-color-disabled`, `--ngb-color-rating`, `--ngb-color-table-border`, `--ngb-color-row-hover`, `--ngb-color-avatar`, `--ngb-color-avatar-text`, `--ngb-color-empty-state-border`, `--ngb-color-carousel-heading`, `--ngb-color-tooltip`, `--ngb-color-progress-track`, `--ngb-color-dialog-backdrop`, `--ngb-color-drawer-backdrop`, `--ngb-color-overlay-divider` |
+| Shape and effects | `--ngb-radius-*`, `--ngb-shadow-*`, `--ngb-gradient-carousel`, `--ngb-gradient-progress`                                                                                                                                                                                                                                                                                                                                                                  |
 
 Import standalone components from `ngblock` and bind their outputs to
 application state:
@@ -65,69 +91,119 @@ export class ProfileComponent {
 }
 ```
 
-### API overview
+## Component reference
 
-- **Overlay:** `DialogOverlayComponent` and `DrawerOverlayComponent` take
-  `open` and required `title` inputs and emit `closed`. Both close on Escape;
-  dialogs also close from the backdrop. The parent owns the open state. Dialog
-  semantics do not provide a focus trap. `ConfirmDialogOverlayComponent` takes
-  `open`, required `title` and `message`, optional action labels, and emits
-  `confirmed` or `cancelled`. `PopoverOverlayComponent` toggles its projected
-  region from a labelled trigger. `TooltipOverlayComponent` shows required
-  `text` on hover or focus.
-- **Message:** `AlertMessageComponent` accepts `info`, `success`, `warning`,
-  or `error` and provides live-region semantics. `BadgeMessageComponent`
-  accepts `neutral`, `success`, `warning`, or `danger`. `ProgressMessageComponent`
-  wraps native progress with `value`, `max`, and accessible `label`.
-  `SpinnerMessageComponent` announces its `label`; `SkeletonMessageComponent`
-  renders configurable loading lines. `ToastMessageComponent` renders a live
-  notification and emits `dismissed`.
-- **Menu:** `DropdownMenuComponent` takes a `label`, toggles projected menu
-  items, and closes on Escape. `BreadcrumbMenuComponent` takes
-  `BreadcrumbItem[]` and marks the last item as the current page. `TabsMenuComponent`
-  takes `MenuTab[]` (`id`, `label`, `content`) and emits the selected ID.
-  `AccordionMenuComponent` takes `AccordionItem[]` (`title`, `content`) and
-  toggles its expanded item. `MenubarMenuComponent` renders labelled
-  navigation from `MenuBarItem[]`. `StepsMenuComponent` renders a controlled
-  step list from `MenuStep[]` and emits prior-step selections.
-- **Layout:** `CardLayoutComponent` projects content beneath a required
-  `title`. `ContainerLayoutComponent` accepts `small`, `medium`, `large`, or
-  `full` sizing. `DividerLayoutComponent` accepts `horizontal` or `vertical`.
-  `StackLayoutComponent` accepts `horizontal` or `vertical` direction and a
-  CSS `gap`. `ToolbarLayoutComponent` provides a labelled semantic toolbar.
-  `PanelLayoutComponent` provides a titled section with optional collapsing.
-- **Form:** Text field and textarea bind native fields and emit string values.
-  Select takes `SelectOption[]` (`label`, `value`); radio group takes a
-  required label and `RadioOption[]` (`label`, `value`). Switch and checkbox
-  emit checked state. Password has a visibility toggle; number emits a number
-  or `null`; date picker emits a native `YYYY-MM-DD` value; multi-select takes
-  `MultiSelectOption[]` and emits selected string values; file upload emits
-  selected `File[]` without uploading them; rating emits an integer; slider
-  emits a number. `AutocompleteFormComponent` uses a native datalist and emits
-  typed values. `ColorPickerFormComponent` wraps the native color input.
-  `ListboxFormComponent` renders a native single-select listbox. Native input
-  semantics and constraints are preserved.
-- **Data:** Table takes required `DataColumn[]` (`key`, `header`) and optional
-  `DataRow[]` of string/number values. List renders ordered or unordered string
-  items. Avatar shows a supplied image or accessible initials. Empty state
-  takes a title, optional description, and projected actions. Paginator takes
-  `total`, `pageSize`, and the zero-based current `page`, then emits valid
-  page indices. Timeline takes events with a title and optional description
-  and date. Carousel provides slide navigation, image renders required
-  alternative text with an optional caption, and tree renders hierarchical
-  groups.
-- **Control:** Text and icon buttons expose native button type and disabled
-  inputs and emit click events. The icon button takes a required accessible
-  name; `ButtonIcon` lists supported glyph names. Button group labels projected
-  controls. Link takes an `href` and supports safe external links. Toggle
-  button takes `pressed` and emits the next state. Split button combines a
-  primary action with a menu of labelled secondary actions.
-- **Message:** `ChipMessageComponent` renders a labelled chip and can emit a
-  removal request.
-- **Misc:** Icon displays a decorative glyph hidden from assistive technology.
+All components are standalone and exported from `ngblock`. Required inputs are
+marked **required**; other inputs have defaults. Events are Angular outputs.
+Unless noted otherwise, stateful inputs are initialized from the supplied
+value, and an emitted event should be written back by the application when it
+needs to keep the value controlled.
 
-Most components intentionally use browser-native styling and semantics.
-`apps/showcase` is a runnable, styled example composed from the library.
+### Overlays
+
+| Selector                     | Description                                                                                  | Inputs and events                                                                                                                  |
+| ---------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-confirm-dialog-overlay` | Modal confirmation prompt with cancel and confirm actions.                                   | `open` (false), required `title`, `message`, `confirmLabel` (`Confirm`), `cancelLabel` (`Cancel`); emits `confirmed`, `cancelled`. |
+| `ngb-dialog-overlay`         | Modal dialog with projected content; closes on Escape or backdrop click. Parent owns `open`. | `open` (false), required `title`; emits `closed`.                                                                                  |
+| `ngb-drawer-overlay`         | Modal side panel with projected content; closes on Escape or backdrop click.                 | `open` (false), required `title`, `side` (`left` or `right`, defaults to `right`); emits `closed`.                                 |
+| `ngb-popover-overlay`        | Labelled trigger that toggles a projected popover region.                                    | `label` (`More information`).                                                                                                      |
+| `ngb-tooltip-overlay`        | Displays short helper text on hover or keyboard focus.                                       | Required `text`.                                                                                                                   |
+
+Dialog and drawer markup includes modal semantics but does not implement a focus
+trap. Manage focus and restore it in the application when required.
+
+### Messages and feedback
+
+| Selector               | Description                                         | Inputs and events                                                                                                                 |
+| ---------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-alert-message`    | Inline status/alert region for contextual feedback. | `type`: `info`, `success`, `warning`, or `error` (defaults to `info`).                                                            |
+| `ngb-badge-message`    | Compact status badge.                               | `tone`: `neutral`, `success`, `warning`, or `danger` (defaults to `neutral`).                                                     |
+| `ngb-chip-message`     | Label chip with optional removal action.            | Required `label`, `removable` (false); emits `removed` when removal is requested.                                                 |
+| `ngb-progress-message` | Accessible native progress indicator.               | `value` (0), `max` (100), `label` (`Progress`).                                                                                   |
+| `ngb-skeleton-message` | Loading placeholder made of configurable lines.     | `lines` (3).                                                                                                                      |
+| `ngb-spinner-message`  | Busy indicator with an accessible announcement.     | `label` (`Loading`).                                                                                                              |
+| `ngb-toast-message`    | Live notification with optional dismiss control.    | Required `title`, `type` (`info`, `success`, `warning`, or `error`; defaults to `info`), `dismissible` (true); emits `dismissed`. |
+
+### Menus and navigation
+
+| Selector              | Description                                                          | Inputs and events                                                                                                                              |
+| --------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-accordion-menu`  | Expand/collapse sections; one section is expanded at a time.         | Required `items: AccordionItem[]`, each with `title` and `content`.                                                                            |
+| `ngb-breadcrumb-menu` | Breadcrumb navigation; the last item is marked as the current page.  | Required `items: BreadcrumbItem[]`, each with `label` and optional `href`.                                                                     |
+| `ngb-dropdown-menu`   | Trigger for a projected menu; closes on Escape.                      | `label` (`Menu`); project menu items as children.                                                                                              |
+| `ngb-menubar-menu`    | Horizontal navigation links.                                         | Required `items: MenuBarItem[]`, each with `label` and optional `href`.                                                                        |
+| `ngb-steps-menu`      | Step navigation with a controlled active index.                      | Required `steps: MenuStep[]` (`label`, optional `description`), `activeIndex` (0); emits `activeIndexChange` when an earlier step is selected. |
+| `ngb-tabs-menu`       | Tab list and associated panels; selection is reported to the parent. | Required `tabs: MenuTab[]` (`id`, `label`, `content`); emits the selected tab ID through `selected`.                                           |
+
+### Layout
+
+| Selector               | Description                                                 | Inputs and events                                                                                         |
+| ---------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `ngb-card-layout`      | Titled card that projects arbitrary content.                | Required `title`.                                                                                         |
+| `ngb-container-layout` | Centered responsive content width.                          | `size`: `small`, `medium`, `large`, or `full` (defaults to `large`).                                      |
+| `ngb-divider-layout`   | Semantic horizontal or vertical separator.                  | `orientation`: `horizontal` or `vertical` (defaults to `horizontal`).                                     |
+| `ngb-panel-layout`     | Titled section with optional collapse control.              | Required `title`, `collapsible` (false).                                                                  |
+| `ngb-stack-layout`     | Flex stack for vertically or horizontally arranged content. | `direction`: `vertical` or `horizontal` (defaults to `vertical`), `gap` (CSS length, defaults to `1rem`). |
+| `ngb-toolbar-layout`   | Labelled semantic toolbar for projected controls.           | `label` (`Toolbar`).                                                                                      |
+
+### Forms
+
+Form components use native HTML controls and preserve their keyboard,
+validation, and input semantics. Change outputs report user edits; set the
+corresponding input to keep a form value synchronized.
+
+| Selector                | Description                                               | Inputs and events                                                                                                                                        |
+| ----------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-autocomplete-form` | Text input with a native datalist of suggestions.         | Required `label`, `options: string[]`, `value` (empty), `placeholder` (empty); emits `changed: string`.                                                  |
+| `ngb-color-picker-form` | Native color input.                                       | Required `label`, `value` (`#3b82f6`); emits `changed: string`.                                                                                          |
+| `ngb-date-picker-form`  | Native date input; values use `YYYY-MM-DD`.               | Required `label`, `value`, `min`, `max` (empty), `disabled` (false); emits `changed: string`.                                                            |
+| `ngb-file-upload-form`  | Native file chooser; selection is reported, not uploaded. | Required `label`, `accept` (empty), `multiple` (false), `disabled` (false); emits selected files as `selected: readonly File[]`.                         |
+| `ngb-listbox-form`      | Native single-selection listbox.                          | Required `label`, `options: ListboxOption[]` (`label`, `value`), `value` (empty); emits `changed: string`.                                               |
+| `ngb-multi-select-form` | Native multiple-selection list.                           | Required `label`, `options: MultiSelectOption[]` (`label`, `value`), `value` (empty array), `disabled` (false); emits `changed: readonly string[]`.      |
+| `ngb-number-form`       | Numeric input with optional bounds.                       | Required `label`, `value`, `min`, `max` (null), `step` (1), `disabled` (false); emits `changed: number                                                   | null`. |
+| `ngb-password-form`     | Password field with a show/hide control.                  | Required `label`, `value` and `placeholder` (empty), `disabled` (false); emits `changed: string`.                                                        |
+| `ngb-radio-group-form`  | Labeled native radio group.                               | Required `label`, `options: RadioOption[]` (`label`, `value`), `name` (`ngb-radio-group`), `value` (empty), `disabled` (false); emits `changed: string`. |
+| `ngb-rating-form`       | Selectable star rating.                                   | `label` (`Rating`), `value` (0), `max` (5), `disabled` (false); emits `changed: number`.                                                                 |
+| `ngb-select-form`       | Native single-selection dropdown.                         | Required `label`, `options: SelectOption[]` (`label`, `value`), `value` (empty), `disabled` and `required` (false); emits `changed: string`.             |
+| `ngb-slider-form`       | Native range slider.                                      | Required `label`, `value` (50), `min` (0), `max` (100), `step` (1); emits `changed: number`.                                                             |
+| `ngb-switch-form`       | Labeled native switch.                                    | Required `label`, `checked` and `disabled` (false); emits `changed: boolean`.                                                                            |
+| `ngb-text-field-form`   | Labeled text input.                                       | Required `label`, `value` and `placeholder` (empty), `type` (`text`), `disabled` and `required` (false); emits `changed: string`.                        |
+| `ngb-textarea-form`     | Labeled multiline text field.                             | Required `label`, `value` and `placeholder` (empty), `rows` (4), `disabled` and `required` (false); emits `changed: string`.                             |
+
+### Data display
+
+| Selector               | Description                                                                                | Inputs and events                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-avatar-data`      | Avatar image or initials derived from the supplied name.                                   | Required `name`, optional `src` (empty).                                                                                          |
+| `ngb-carousel-data`    | Slide presentation with previous/next and slide selection controls.                        | Required `slides: CarouselSlide[]` (`title`, optional `description`).                                                             |
+| `ngb-empty-state-data` | Empty-result message with optional description and projected actions.                      | Required `title`, `description` (empty).                                                                                          |
+| `ngb-image-data`       | Responsive image with required alternative text and optional caption.                      | Required `src`, `alt`; `caption` (empty).                                                                                         |
+| `ngb-list-data`        | Ordered or unordered list of text items.                                                   | Required `items: string[]`, `ordered` (false).                                                                                    |
+| `ngb-paginator-data`   | Page navigation for a collection. `page` is zero-based and `total` is the number of items. | Required `total`, `pageSize` (10), `page` (0); emits valid zero-based indices through `pageChange`.                               |
+| `ngb-table-data`       | Accessible table from column definitions and key/value rows.                               | Required `columns: DataColumn[]` (`key`, `header`), `rows: DataRow[]` (empty; values are strings or numbers), `caption` (`Data`). |
+| `ngb-timeline-data`    | Chronological event list.                                                                  | Required `events: TimelineEvent[]` (`title`, optional `description` and `date`).                                                  |
+| `ngb-tree-data`        | Hierarchical tree of labelled nodes.                                                       | Required `nodes: TreeNode[]` (`label`, optional recursive `children`).                                                            |
+
+### Controls
+
+| Selector                    | Description                                                                         | Inputs and events                                                                                                                                                                                                                     |
+| --------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ngb-button-group-control`  | Labelled group for projected related actions.                                       | `label` (`Actions`).                                                                                                                                                                                                                  |
+| `ngb-button-icon-control`   | Icon-only button with a required accessible name.                                   | Required `icon: ButtonIcon` and `ariaLabel`; `type` (`button`), `disabled` (false); emits the native click event through `clicked`. Icons: `add`, `check`, `close`, `delete`, `edit`, `favorite`, `home`, `menu`, `remove`, `search`. |
+| `ngb-button-text-control`   | Text button with native button type and disabled behavior.                          | `type` (`button`), `disabled` (false); projects its label and emits the native click event through `clicked`.                                                                                                                         |
+| `ngb-checkbox-control`      | Checkbox with projected label content.                                              | `checked` and `disabled` (false); emits `changed: boolean`.                                                                                                                                                                           |
+| `ngb-link-control`          | Link to an application or external URL. External links use safe new-tab attributes. | Required `href`, `external` (false); projects link text.                                                                                                                                                                              |
+| `ngb-split-button-control`  | Primary action paired with a menu of secondary actions.                             | Required `label`, `options: SplitButtonOption[]` (`label`, `value`); emits the selected value through `action`.                                                                                                                       |
+| `ngb-toggle-button-control` | Two-state pressed/unpressed button.                                                 | `pressed` and `disabled` (false); emits the requested state through `changed: boolean`.                                                                                                                                               |
+
+### Miscellaneous
+
+| Selector   | Description                                                                                                                | Inputs and events |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `ngb-icon` | Decorative glyph hidden from assistive technology; pair it with visible text or an accessible label on its parent control. | Required `glyph`. |
+
+`apps/showcase` demonstrates the components together. Storybook provides
+isolated interactive examples for each component.
 
 ## Develop
 

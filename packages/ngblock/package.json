@@ -1,6 +1,6 @@
 {
   "name": "ngblock",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A standalone Angular UI component library with accessible controls, forms, layout, and data components.",
   "license": "MIT",
   "author": "Jakub Olejarczyk",

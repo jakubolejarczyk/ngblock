@@ -9,7 +9,6 @@ import {
 @Component({
   selector: 'ngb-dialog-overlay',
   templateUrl: './dialog.overlay.html',
-  styleUrl: './dialog.overlay.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogOverlayComponent {

@@ -1,3 +1,7 @@
-<div class="stack" [attr.data-direction]="direction()" [style.gap]="gap()">
+<div
+  class="stack"
+  [attr.data-direction]="direction()"
+  [style.--ngb-stack-gap]="gap()"
+>
   <ng-content />
 </div>

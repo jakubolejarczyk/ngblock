@@ -125,6 +125,7 @@ import {
 })
 export class App {
   readonly name = signal('Jordan Lee');
+  readonly theme = signal<'default' | 'ocean'>('default');
   readonly email = signal('jordan@example.com');
   readonly description = signal('');
   readonly notifications = signal(true);
@@ -160,6 +161,10 @@ export class App {
   ];
   readonly memberPage = signal(0);
   readonly onboardingStep = signal(1);
+
+  toggleTheme(): void {
+    this.theme.update((theme) => (theme === 'default' ? 'ocean' : 'default'));
+  }
 
   onFilesSelected(files: readonly File[]): void {
     this.uploadMessage.set(
