@@ -1,0 +1,25 @@
+<table>
+  <caption>
+    {{ caption() }}
+  </caption>
+  <thead>
+    <tr>
+      @for (column of columns(); track column.key) {
+      <th scope="col">{{ column.header }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows(); track $index) {
+    <tr>
+      @for (column of columns(); track column.key) {
+      <td>{{ row[column.key] }}</td>
+      }
+    </tr>
+    } @empty {
+    <tr>
+      <td [attr.colspan]="columns().length">No data</td>
+    </tr>
+    }
+  </tbody>
+</table>

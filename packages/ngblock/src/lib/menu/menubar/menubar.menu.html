@@ -1,0 +1,13 @@
+<nav aria-label="Main menu">
+  <ul>
+    @for (item of items(); track item.label) {
+    <li>
+      @if (item.href) {
+      <a [href]="item.href">{{ item.label }}</a>
+      } @else {
+      <button type="button">{{ item.label }}</button>
+      }
+    </li>
+    }
+  </ul>
+</nav>

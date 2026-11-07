@@ -1,0 +1,19 @@
+@if (open()) {
+  <button
+    type="button"
+    class="dialog-backdrop"
+    aria-label="Cancel confirmation"
+    (click)="cancelled.emit()"
+  ></button>
+  <section
+    role="alertdialog"
+    aria-modal="true"
+    [attr.aria-label]="title()"
+    [attr.aria-describedby]="'ngb-confirm-message'"
+  >
+    <h2>{{ title() }}</h2>
+    <p id="ngb-confirm-message">{{ message() }}</p>
+    <button type="button" (click)="cancelled.emit()">{{ cancelLabel() }}</button>
+    <button type="button" (click)="confirmed.emit()">{{ confirmLabel() }}</button>
+  </section>
+}

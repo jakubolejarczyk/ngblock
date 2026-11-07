@@ -1,0 +1,22 @@
+@if (open()) {
+<button
+  type="button"
+  class="backdrop"
+  aria-label="Close drawer"
+  (click)="close()"
+></button>
+<aside
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="title()"
+  [attr.data-side]="side()"
+>
+  <header>
+    <h2>{{ title() }}</h2>
+    <button type="button" aria-label="Close drawer" (click)="close()">
+      Close
+    </button>
+  </header>
+  <ng-content />
+</aside>
+}

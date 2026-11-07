@@ -1,0 +1,12 @@
+<label>
+  {{ label() }}
+  <input
+    type="range"
+    [value]="value()"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [attr.aria-valuetext]="value()"
+    (input)="onInput($event)"
+  />
+</label>

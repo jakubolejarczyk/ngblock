@@ -1,0 +1,44 @@
+@if (slides().length > 0) {
+<section aria-roledescription="carousel" aria-label="Featured items">
+  <div aria-live="polite">
+    <article
+      role="group"
+      aria-roledescription="slide"
+      [attr.aria-label]="(index() + 1) + ' of ' + slides().length"
+    >
+      <h2>{{ slides()[index()].title }}</h2>
+      @if (slides()[index()].description) {
+      <p>{{ slides()[index()].description }}</p>
+      }
+    </article>
+  </div>
+  <button
+    type="button"
+    aria-label="Previous slide"
+    [disabled]="index() === 0"
+    (click)="previous()"
+  >
+    Previous
+  </button>
+  <button
+    type="button"
+    aria-label="Next slide"
+    [disabled]="index() >= slides().length - 1"
+    (click)="next()"
+  >
+    Next
+  </button>
+  <div aria-label="Choose slide">
+    @for (slide of slides(); track $index; let i = $index) {
+    <button
+      type="button"
+      [attr.aria-label]="'Show slide ' + (i + 1)"
+      [attr.aria-current]="index() === i ? 'true' : null"
+      (click)="goTo(i)"
+    >
+      {{ i + 1 }}
+    </button>
+    }
+  </div>
+</section>
+}

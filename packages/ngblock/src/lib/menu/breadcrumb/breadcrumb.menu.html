@@ -1,0 +1,15 @@
+<nav aria-label="Breadcrumb">
+  <ol>
+    @for (item of items(); track $index; let last = $last) {
+    <li>
+      @if (last) {
+      <span aria-current="page">{{ item.label }}</span>
+      } @else if (item.href) {
+      <a [href]="item.href">{{ item.label }}</a>
+      } @else {
+      <span>{{ item.label }}</span>
+      }
+    </li>
+    }
+  </ol>
+</nav>

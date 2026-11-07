@@ -4,7 +4,7 @@
   "sourceRoot": "packages/ngblock/src",
   "prefix": "ngb",
   "projectType": "library",
-  "tags": [],
+  "tags": ["scope:shared"],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",

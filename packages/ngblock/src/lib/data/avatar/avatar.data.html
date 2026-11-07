@@ -1,0 +1,5 @@
+@if (src()) {
+<img [src]="src()" [alt]="name()" />
+} @else {
+<span role="img" [attr.aria-label]="name()">{{ initials() }}</span>
+}

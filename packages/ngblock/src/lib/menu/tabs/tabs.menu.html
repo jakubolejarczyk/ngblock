@@ -1,0 +1,16 @@
+<div role="tablist">
+  @for (tab of tabs(); track tab.id; let first = $first) {
+  <button
+    type="button"
+    role="tab"
+    [attr.aria-selected]="activeId() ? activeId() === tab.id : first"
+    (click)="select(tab.id)"
+  >
+    {{ tab.label }}
+  </button>
+  }
+</div>
+@for (tab of tabs(); track tab.id; let first = $first) { @if (activeId() ?
+activeId() === tab.id : first) {
+<section role="tabpanel">{{ tab.content }}</section>
+} }

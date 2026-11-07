@@ -1,0 +1,11 @@
+<label>
+  {{ label() }}
+  <input
+    [type]="type()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    [required]="required()"
+    (input)="onInput($event)"
+  />
+</label>

@@ -1,0 +1,12 @@
+<span
+  tabindex="0"
+  (mouseenter)="visible.set(true)"
+  (mouseleave)="visible.set(false)"
+  (focus)="visible.set(true)"
+  (blur)="visible.set(false)"
+>
+  <ng-content />
+  @if (visible()) {
+  <span role="tooltip">{{ text() }}</span>
+  }
+</span>

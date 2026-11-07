@@ -1,0 +1,11 @@
+<span>
+  <button type="button" [attr.aria-expanded]="open()" (click)="toggle()">
+    {{ label() }}
+  </button>
+  @if (open()) {
+  <span role="region">
+    <ng-content />
+    <button type="button" (click)="close()">Dismiss</button>
+  </span>
+  }
+</span>

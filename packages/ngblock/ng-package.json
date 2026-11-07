@@ -1,6 +1,28 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/packages/ngblock",
+  "assets": [
+    {
+      "glob": "styles.css",
+      "input": "src",
+      "output": "."
+    },
+    {
+      "glob": "CHANGELOG.md",
+      "input": ".",
+      "output": "."
+    },
+    {
+      "glob": "PUBLISHING.md",
+      "input": ".",
+      "output": "."
+    },
+    {
+      "glob": "LICENSE",
+      "input": ".",
+      "output": "."
+    }
+  ],
   "lib": {
     "entryFile": "src/index.ts"
   }

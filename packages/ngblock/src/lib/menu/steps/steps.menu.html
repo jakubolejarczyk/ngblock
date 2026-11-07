@@ -1,0 +1,17 @@
+<ol aria-label="Progress steps">
+  @for (step of steps(); track $index; let index = $index) {
+  <li>
+    <button
+      type="button"
+      [attr.aria-current]="activeIndex() === index ? 'step' : null"
+      [disabled]="index > activeIndex()"
+      (click)="activeIndexChange.emit(index)"
+    >
+      <span>{{ index + 1 }}.</span> {{ step.label }}
+    </button>
+    @if (step.description) {
+    <p>{{ step.description }}</p>
+    }
+  </li>
+  }
+</ol>

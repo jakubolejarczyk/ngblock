@@ -1,0 +1,18 @@
+<section
+  [attr.role]="type() === 'error' || type() === 'warning' ? 'alert' : 'status'"
+  [attr.data-type]="type()"
+>
+  <div>
+    <strong>{{ title() }}</strong>
+    <ng-content />
+  </div>
+  @if (dismissible()) {
+  <button
+    type="button"
+    aria-label="Dismiss notification"
+    (click)="dismissed.emit()"
+  >
+    ×
+  </button>
+  }
+</section>

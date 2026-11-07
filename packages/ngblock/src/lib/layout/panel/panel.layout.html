@@ -1,0 +1,17 @@
+<section>
+  <header>
+    <h2>{{ title() }}</h2>
+    @if (collapsible()) {
+    <button
+      type="button"
+      [attr.aria-expanded]="expanded()"
+      (click)="expanded.update((value) => !value)"
+    >
+      {{ expanded() ? 'Collapse' : 'Expand' }}
+    </button>
+    }
+  </header>
+  @if (expanded() || !collapsible()) {
+  <div><ng-content /></div>
+  }
+</section>

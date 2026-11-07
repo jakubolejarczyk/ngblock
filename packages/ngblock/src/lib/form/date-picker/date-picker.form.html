@@ -1,0 +1,11 @@
+<label>
+  {{ label() }}
+  <input
+    type="date"
+    [value]="value()"
+    [min]="min()"
+    [max]="max()"
+    [disabled]="disabled()"
+    (change)="onChange($event)"
+  />
+</label>

@@ -1,0 +1,12 @@
+<ol>
+  @for (event of events(); track $index) {
+  <li>
+    <h3>{{ event.title }}</h3>
+    @if (event.date) {
+    <time>{{ event.date }}</time>
+    } @if (event.description) {
+    <p>{{ event.description }}</p>
+    }
+  </li>
+  }
+</ol>

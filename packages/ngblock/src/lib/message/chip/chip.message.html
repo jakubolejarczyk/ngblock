@@ -1,0 +1,11 @@
+<span>
+  {{ label() }} @if (removable()) {
+  <button
+    type="button"
+    [attr.aria-label]="'Remove ' + label()"
+    (click)="removed.emit()"
+  >
+    ×
+  </button>
+  }
+</span>

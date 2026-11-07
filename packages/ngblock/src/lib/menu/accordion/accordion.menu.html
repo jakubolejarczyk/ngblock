@@ -1,0 +1,16 @@
+@for (item of items(); track $index; let index = $index) {
+<section>
+  <h3>
+    <button
+      type="button"
+      [attr.aria-expanded]="expandedIndex() === index"
+      (click)="toggle(index)"
+    >
+      {{ item.title }}
+    </button>
+  </h3>
+  @if (expandedIndex() === index) {
+  <div>{{ item.content }}</div>
+  }
+</section>
+}

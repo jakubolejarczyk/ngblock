@@ -1,0 +1,424 @@
+<header class="site-header">
+  <a class="brand" href="#" aria-label="ngblock home">
+    <ngb-icon glyph="◆" />
+    <span>ngblock</span>
+  </a>
+  <ngb-dropdown-menu label="Quick links">
+    <button role="menuitem" type="button">Components</button>
+    <button role="menuitem" type="button">Documentation</button>
+  </ngb-dropdown-menu>
+</header>
+
+<main>
+  <ngb-container-layout size="large">
+    <section class="hero">
+      <ngb-breadcrumb-menu
+        [items]="[
+        { label: 'Home', href: '#' },
+        { label: 'Showcase' }
+      ]"
+      />
+      <ngb-stack-layout gap="1rem">
+        <ngb-badge-message tone="success"
+          >Angular component library</ngb-badge-message
+        >
+        <h1>Build interfaces with ngblock</h1>
+        <p>
+          A practical collection of accessible, standalone UI components for
+          Angular.
+        </p>
+        <ngb-button-group-control label="Explore ngblock">
+          <ngb-button-text-control (clicked)="save()"
+            >Try an interaction</ngb-button-text-control
+          >
+          <ngb-link-control href="https://storybook.js.org/" [external]="true"
+            >Browse Storybook</ngb-link-control
+          >
+        </ngb-button-group-control>
+      </ngb-stack-layout>
+    </section>
+
+    <ngb-alert-message type="success"
+      >Your workspace is up to date.</ngb-alert-message
+    >
+
+    <section class="showcase-section" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Messages and feedback</h2>
+      <div class="grid">
+        <ngb-card-layout title="Status">
+          <ngb-stack-layout>
+            <ngb-alert-message type="info"
+              >Your report is ready to review.</ngb-alert-message
+            >
+            <ngb-alert-message type="warning"
+              >Two fields need your attention.</ngb-alert-message
+            >
+            <ngb-alert-message type="error"
+              >We could not save your changes.</ngb-alert-message
+            >
+            <ngb-spinner-message label="Refreshing dashboard" />
+          </ngb-stack-layout>
+        </ngb-card-layout>
+        <ngb-card-layout title="Loading and progress">
+          <ngb-stack-layout>
+            <ngb-progress-message [value]="progress()" label="Save progress" />
+            <ngb-skeleton-message [lines]="3" />
+            <ngb-button-text-control (clicked)="save()"
+              >Advance progress</ngb-button-text-control
+            >
+            @if (toastVisible()) {
+            <ngb-toast-message
+              title="Changes saved"
+              type="success"
+              (dismissed)="toastVisible.set(false)"
+            >
+              Your progress has been saved.
+            </ngb-toast-message>
+            }
+            <ngb-button-text-control (clicked)="toastVisible.set(true)"
+              >Show toast</ngb-button-text-control
+            >
+          </ngb-stack-layout>
+        </ngb-card-layout>
+      </div>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="layout-title">
+      <h2 id="layout-title">Layout and navigation</h2>
+      <div class="grid">
+        <ngb-card-layout title="Navigation patterns">
+          <ngb-stack-layout>
+            <ngb-tabs-menu
+              [tabs]="[
+                { id: 'overview', label: 'Overview', content: 'A quick summary of your workspace.' },
+                { id: 'activity', label: 'Activity', content: 'Recent updates from your team.' }
+              ]"
+              (selected)="selectedTab.set($event)"
+            />
+            <p>Selected tab: {{ selectedTab() }}</p>
+            <ngb-accordion-menu
+              [items]="[
+                { title: 'What is ngblock?', content: 'An Angular UI component library.' },
+                { title: 'Can I customize it?', content: 'Yes. Components are standalone and compose with native elements.' }
+              ]"
+            />
+          </ngb-stack-layout>
+        </ngb-card-layout>
+        <ngb-card-layout title="Flexible layout">
+          <ngb-stack-layout direction="horizontal" gap="0.75rem">
+            <ngb-avatar-data name="Jordan Lee" />
+            <ngb-avatar-data name="Casey Kim" />
+            <ngb-avatar-data name="Riley Chen" />
+          </ngb-stack-layout>
+          <ngb-divider-layout />
+          <ngb-stack-layout direction="horizontal">
+            <ngb-tooltip-overlay text="A helpful hint"
+              >Hover or focus for a tooltip</ngb-tooltip-overlay
+            >
+            <ngb-popover-overlay label="More info"
+              >Popover content for this section.</ngb-popover-overlay
+            >
+          </ngb-stack-layout>
+        </ngb-card-layout>
+      </div>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="form-title">
+      <h2 id="form-title">A working profile form</h2>
+      <ngb-card-layout title="Profile settings">
+        <div class="form-grid">
+          <ngb-text-field-form
+            label="Full name"
+            [value]="name()"
+            (changed)="name.set($event)"
+            [required]="true"
+          />
+          <ngb-text-field-form
+            label="Email"
+            type="email"
+            [value]="email()"
+            (changed)="email.set($event)"
+          />
+          <ngb-select-form
+            label="Country"
+            [options]="[
+              { label: 'Canada', value: 'ca' },
+              { label: 'France', value: 'fr' },
+              { label: 'Japan', value: 'jp' }
+            ]"
+            [value]="country()"
+            (changed)="country.set($event)"
+          />
+          <ngb-radio-group-form
+            label="Plan"
+            name="showcase-plan"
+            [options]="[
+              { label: 'Starter', value: 'starter' },
+              { label: 'Team', value: 'team' }
+            ]"
+            [value]="plan()"
+            (changed)="plan.set($event)"
+          />
+          <ngb-textarea-form
+            label="About"
+            [value]="description()"
+            (changed)="description.set($event)"
+          />
+          <ngb-stack-layout>
+            <ngb-switch-form
+              label="Email notifications"
+              [checked]="notifications()"
+              (changed)="notifications.set($event)"
+            />
+            <ngb-checkbox-control
+              [checked]="accepted()"
+              (changed)="accepted.set($event)"
+            >
+              I agree to the terms
+            </ngb-checkbox-control>
+            <ngb-button-text-control (clicked)="save()"
+              >Save profile</ngb-button-text-control
+            >
+          </ngb-stack-layout>
+        </div>
+      </ngb-card-layout>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="data-title">
+      <h2 id="data-title">Data and empty states</h2>
+      <div class="grid">
+        <ngb-card-layout title="Team members">
+          <ngb-table-data
+            caption="Team members"
+            [columns]="columns"
+            [rows]="rows.slice(memberPage(), memberPage() + 1)"
+          />
+          <ngb-paginator-data
+            [total]="rows.length"
+            [pageSize]="1"
+            [page]="memberPage()"
+            (pageChange)="memberPage.set($event)"
+          />
+        </ngb-card-layout>
+        <ngb-card-layout title="Recent activity">
+          <ngb-list-data
+            [items]="['Jordan updated the design system', 'Casey added a new component', 'Riley reviewed the release']"
+          />
+          <ngb-empty-state-data
+            title="No more activity"
+            description="You are all caught up."
+          />
+        </ngb-card-layout>
+        <ngb-card-layout title="Project timeline">
+          <ngb-timeline-data
+            [events]="[
+              { title: 'Project created', date: 'Today', description: 'Workspace is ready.' },
+              { title: 'Team invited', date: 'Yesterday', description: 'Two people joined.' }
+            ]"
+          />
+        </ngb-card-layout>
+      </div>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="controls-title">
+      <h2 id="controls-title">Controls and overlays</h2>
+      <ngb-card-layout title="Actions">
+        <ngb-stack-layout direction="horizontal" gap="0.75rem">
+          <ngb-button-text-control (clicked)="dialogOpen.set(true)"
+            >Open dialog</ngb-button-text-control
+          >
+          <ngb-toggle-button-control
+            [pressed]="favorite()"
+            (changed)="favorite.set($event)"
+          >
+            {{ favorite() ? 'Favorited' : 'Add favorite' }}
+          </ngb-toggle-button-control>
+          <ngb-button-icon-control
+            icon="favorite"
+            ariaLabel="Add to favorites"
+            (clicked)="save()"
+          />
+          <ngb-button-text-control (clicked)="drawerOpen.set(true)"
+            >Open drawer</ngb-button-text-control
+          >
+          <ngb-button-text-control (clicked)="confirmOpen.set(true)"
+            >Confirm action</ngb-button-text-control
+          >
+          <ngb-link-control href="https://angular.dev" [external]="true"
+            >Angular</ngb-link-control
+          >
+        </ngb-stack-layout>
+      </ngb-card-layout>
+      <ngb-dialog-overlay
+        [open]="dialogOpen()"
+        title="Profile saved"
+        (closed)="dialogOpen.set(false)"
+      >
+        <p>Your profile is ready to share.</p>
+      </ngb-dialog-overlay>
+      <ngb-drawer-overlay
+        [open]="drawerOpen()"
+        title="Workspace settings"
+        side="right"
+        (closed)="drawerOpen.set(false)"
+      >
+        <p>Manage your workspace preferences here.</p>
+      </ngb-drawer-overlay>
+      <ngb-confirm-dialog-overlay
+        [open]="confirmOpen()"
+        title="Publish changes?"
+        message="This will make your changes visible to your team."
+        confirmLabel="Publish"
+        (confirmed)="confirmOpen.set(false); toastVisible.set(true)"
+        (cancelled)="confirmOpen.set(false)"
+      />
+    </section>
+
+    <section class="showcase-section" aria-labelledby="advanced-form-title">
+      <h2 id="advanced-form-title">More form controls</h2>
+      <ngb-card-layout title="Preferences and uploads">
+        <ngb-toolbar-layout label="Profile actions">
+          <ngb-button-text-control (clicked)="save()"
+            >Save</ngb-button-text-control
+          >
+          <ngb-button-text-control (clicked)="description.set('')"
+            >Clear description</ngb-button-text-control
+          >
+        </ngb-toolbar-layout>
+        <div class="form-grid">
+          <ngb-password-form
+            label="Account password"
+            [value]="password()"
+            (changed)="password.set($event)"
+          />
+          <ngb-number-form
+            label="Seats"
+            [value]="seats()"
+            [min]="1"
+            [max]="50"
+            (changed)="seats.set($event)"
+          />
+          <ngb-date-picker-form
+            label="Start date"
+            [value]="startDate()"
+            (changed)="startDate.set($event)"
+          />
+          <ngb-multi-select-form
+            label="Skills"
+            [options]="[
+              { label: 'Angular', value: 'angular' },
+              { label: 'TypeScript', value: 'typescript' },
+              { label: 'Accessibility', value: 'a11y' }
+            ]"
+            [value]="skills()"
+            (changed)="skills.set($event)"
+          />
+          <ngb-rating-form
+            label="Rate this example"
+            [value]="rating()"
+            (changed)="rating.set($event)"
+          />
+          <ngb-slider-form
+            label="Volume"
+            [value]="volume()"
+            (changed)="volume.set($event)"
+          />
+          <ngb-file-upload-form
+            label="Choose attachments"
+            accept="image/*,.pdf"
+            [multiple]="true"
+            (selected)="onFilesSelected($event)"
+          />
+          <p aria-live="polite">{{ uploadMessage() }}</p>
+        </div>
+      </ngb-card-layout>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="more-components-title">
+      <h2 id="more-components-title">More components</h2>
+      <div class="grid">
+        <ngb-card-layout title="Search and selection">
+          <ngb-stack-layout>
+            <ngb-autocomplete-form
+              label="Framework"
+              [options]="['Angular', 'React', 'Svelte', 'Vue']"
+              [value]="framework()"
+              (changed)="framework.set($event)"
+            />
+            <ngb-listbox-form
+              label="Workspace"
+              [options]="[
+                { label: 'Design', value: 'design' },
+                { label: 'Engineering', value: 'engineering' },
+                { label: 'Research', value: 'research' }
+              ]"
+              [value]="workspace()"
+              (changed)="workspace.set($event)"
+            />
+            <ngb-color-picker-form
+              label="Accent color"
+              [value]="accentColor()"
+              (changed)="accentColor.set($event)"
+            />
+            <ngb-chip-message label="Angular" [removable]="true" />
+          </ngb-stack-layout>
+        </ngb-card-layout>
+        <ngb-card-layout title="Menus and progress">
+          <ngb-stack-layout>
+            <ngb-menubar-menu
+              [items]="[
+                { label: 'Overview', href: '#' },
+                { label: 'Projects', href: '#projects' },
+                { label: 'Settings' }
+              ]"
+            />
+            <ngb-steps-menu
+              [steps]="[
+                { label: 'Account' },
+                { label: 'Preferences' },
+                { label: 'Finish' }
+              ]"
+              [activeIndex]="onboardingStep()"
+              (activeIndexChange)="onboardingStep.set($event)"
+            />
+            <ngb-carousel-data
+              [slides]="[
+                { title: 'Build', description: 'Compose reusable components.' },
+                { title: 'Share', description: 'Document your design system.' }
+              ]"
+            />
+            <ngb-split-button-control
+              label="Save"
+              [options]="[
+                { label: 'Save as draft', value: 'draft' },
+                { label: 'Save and close', value: 'close' }
+              ]"
+              (action)="save()"
+            />
+          </ngb-stack-layout>
+        </ngb-card-layout>
+        <ngb-panel-layout title="Project structure" [collapsible]="true">
+          <ngb-tree-data
+            [nodes]="[
+              { label: 'Applications', children: [{ label: 'Showcase' }, { label: 'Storybook' }] },
+              { label: 'Packages', children: [{ label: 'ngblock' }] }
+            ]"
+          />
+        </ngb-panel-layout>
+        <ngb-card-layout title="Accessible media">
+          <ngb-image-data
+            src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900"
+            alt="Sunrise over a mountain valley"
+            caption="A new day in the mountains."
+          />
+        </ngb-card-layout>
+      </div>
+    </section>
+  </ngb-container-layout>
+</main>
+
+<footer>
+  <ngb-container-layout size="large">
+    <p>Built with ngblock · Standalone Angular UI components</p>
+  </ngb-container-layout>
+</footer>

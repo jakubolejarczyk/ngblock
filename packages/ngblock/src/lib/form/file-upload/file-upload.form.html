@@ -1,0 +1,10 @@
+<label>
+  {{ label() }}
+  <input
+    type="file"
+    [attr.accept]="accept() || null"
+    [multiple]="multiple()"
+    [disabled]="disabled()"
+    (change)="onChange($event)"
+  />
+</label>

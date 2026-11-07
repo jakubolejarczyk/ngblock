@@ -1,0 +1,14 @@
+<fieldset [disabled]="disabled()">
+  <legend>{{ label() }}</legend>
+  @for (star of [].constructor(max()); track $index; let index = $index) {
+  <button
+    type="button"
+    [attr.aria-label]="(index + 1) + ' of ' + max()"
+    [attr.aria-pressed]="value() === index + 1"
+    [disabled]="disabled()"
+    (click)="changed.emit(index + 1)"
+  >
+    {{ index < value() ? '★' : '☆' }}
+  </button>
+  }
+</fieldset>

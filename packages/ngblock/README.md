@@ -1,113 +1,148 @@
 # ngblock
 
-## Components
+An Angular UI library of standalone, native-element-first components. The
+library covers common interface building blocks rather than every specialized
+widget an application might need; components compose with native HTML and can
+be styled by the consuming application.
 
-| Group | Component | Type | Selector |
-| --- | --- | --- | --- |
-| Control / Button | Button text | `control` | `ngb-button-text-control` |
-| Control / Button | Button icon | `control` | `ngb-button-icon-control` |
-| Misc | Icon | `misc` | `ngb-icon` |
+## Component catalog
 
-The button components are in `src/lib/control/button/`; the icon component is
-in `src/lib/misc/icon/`. Component files use the
-`<component-name>.<type>.<extension>` naming convention, for example
-`button-text.control.ts` and `button-icon.control.ts`.
+| Group   | Components                                                                                                                                                       |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Overlay | Confirmation dialog, dialog, drawer, popover, tooltip                                                                                                            |
+| Message | Alert, badge, chip, progress, skeleton, spinner, toast                                                                                                           |
+| Menu    | Accordion, breadcrumb, dropdown, menubar, steps, tabs                                                                                                            |
+| Layout  | Card, container, divider, panel, stack, toolbar                                                                                                                  |
+| Form    | Autocomplete, color picker, date picker, file upload, listbox, multi-select, number, password, radio group, rating, select, slider, switch, text field, textarea |
+| Data    | Avatar, carousel, empty state, image, list, paginator, table, timeline, tree                                                                                     |
+| Control | Button group, checkbox, icon button, link, split button, text button, toggle button                                                                              |
+| Misc    | Icon                                                                                                                                                             |
+
+Components live under `src/lib/<group>/<component>/` and use the
+`<component-name>.<type>.<extension>` naming convention. Each component is
+exported from the package entry point, has a focused spec, and has Storybook
+stories under its source folder.
 
 ## Use
+
+Install the package:
 
 ```bash
 npm install ngblock
 ```
 
-Import the standalone components you use:
+Add the optional component theme to your Angular application's global styles:
 
-```ts
-import { Component } from '@angular/core';
-import {
-  ButtonIconComponent,
-  ButtonTextComponent,
-  IconComponent,
-} from 'ngblock';
-
-@Component({
-  selector: 'app-example',
-  imports: [ButtonTextComponent, ButtonIconComponent, IconComponent],
-  template: `
-    <ngb-button-text-control (clicked)="save($event)">Save</ngb-button-text-control>
-    <ngb-button-text-control type="submit" [disabled]="isSaving">Submit</ngb-button-text-control>
-    <ngb-button-icon-control
-      icon="favorite"
-      ariaLabel="Add to favorites"
-      (clicked)="addToFavorites($event)"
-    />
-    <ngb-icon glyph="★" />
-  `,
-})
-export class ExampleComponent {
-  isSaving = false;
-
-  save(event: MouseEvent): void {
-    // Perform an operation using the click event.
-  }
-
-  addToFavorites(event: MouseEvent): void {
-    // Perform an operation using the click event.
-  }
+```json
+{
+  "styles": ["node_modules/ngblock/styles.css", "src/styles.css"]
 }
 ```
 
-`ButtonTextComponent` wraps a native button and projects its text content. It
-supports these inputs and output:
+The theme is opt-in and styles component hosts and their native controls. It
+does not set page-wide typography or backgrounds. Customize its `--ngb-*` CSS
+variables after the import. See [PUBLISHING.md](./PUBLISHING.md) for release
+instructions.
 
-| Name | Kind | Type | Default |
-| --- | --- | --- | --- |
-| `type` | Input | `'button' \| 'submit' \| 'reset'` | `'button'` |
-| `disabled` | Input | `boolean` | `false` |
-| `clicked` | Output | `MouseEvent` | — |
+Import standalone components from `ngblock` and bind their outputs to
+application state:
 
-`clicked` emits the native click event. The component intentionally uses
-the browser's default button styling.
+```ts
+import { Component, signal } from '@angular/core';
+import { ButtonTextComponent, TextFieldFormComponent } from 'ngblock';
 
-### Button icon
+@Component({
+  imports: [ButtonTextComponent, TextFieldFormComponent],
+  template: `
+    <ngb-text-field-form label="Name" [value]="name()" (changed)="name.set($event)" />
+    <ngb-button-text-control (clicked)="save()">Save</ngb-button-text-control>
+  `,
+})
+export class ProfileComponent {
+  readonly name = signal('');
 
-The icon button renders one of the supported icons selected through the `icon`
-input. TypeScript exposes the `ButtonIcon` union for editor autocomplete:
-
-```html
-<ngb-button-icon-control
-  icon="favorite"
-  ariaLabel="Add to favorites"
-  (clicked)="addToFavorites($event)"
-/>
+  save(): void {}
+}
 ```
 
-Available values: `add`, `check`, `close`, `delete`, `edit`, `favorite`,
-`home`, `menu`, `remove`, and `search`.
+### API overview
 
-| Name | Kind | Type | Default |
-| --- | --- | --- | --- |
-| `icon` | Input | `ButtonIcon` | Required |
-| `ariaLabel` | Input | `string` | Required |
-| `type` | Input | `'button' \| 'submit' \| 'reset'` | `'button'` |
-| `disabled` | Input | `boolean` | `false` |
-| `clicked` | Output | `MouseEvent` | — |
+- **Overlay:** `DialogOverlayComponent` and `DrawerOverlayComponent` take
+  `open` and required `title` inputs and emit `closed`. Both close on Escape;
+  dialogs also close from the backdrop. The parent owns the open state. Dialog
+  semantics do not provide a focus trap. `ConfirmDialogOverlayComponent` takes
+  `open`, required `title` and `message`, optional action labels, and emits
+  `confirmed` or `cancelled`. `PopoverOverlayComponent` toggles its projected
+  region from a labelled trigger. `TooltipOverlayComponent` shows required
+  `text` on hover or focus.
+- **Message:** `AlertMessageComponent` accepts `info`, `success`, `warning`,
+  or `error` and provides live-region semantics. `BadgeMessageComponent`
+  accepts `neutral`, `success`, `warning`, or `danger`. `ProgressMessageComponent`
+  wraps native progress with `value`, `max`, and accessible `label`.
+  `SpinnerMessageComponent` announces its `label`; `SkeletonMessageComponent`
+  renders configurable loading lines. `ToastMessageComponent` renders a live
+  notification and emits `dismissed`.
+- **Menu:** `DropdownMenuComponent` takes a `label`, toggles projected menu
+  items, and closes on Escape. `BreadcrumbMenuComponent` takes
+  `BreadcrumbItem[]` and marks the last item as the current page. `TabsMenuComponent`
+  takes `MenuTab[]` (`id`, `label`, `content`) and emits the selected ID.
+  `AccordionMenuComponent` takes `AccordionItem[]` (`title`, `content`) and
+  toggles its expanded item. `MenubarMenuComponent` renders labelled
+  navigation from `MenuBarItem[]`. `StepsMenuComponent` renders a controlled
+  step list from `MenuStep[]` and emits prior-step selections.
+- **Layout:** `CardLayoutComponent` projects content beneath a required
+  `title`. `ContainerLayoutComponent` accepts `small`, `medium`, `large`, or
+  `full` sizing. `DividerLayoutComponent` accepts `horizontal` or `vertical`.
+  `StackLayoutComponent` accepts `horizontal` or `vertical` direction and a
+  CSS `gap`. `ToolbarLayoutComponent` provides a labelled semantic toolbar.
+  `PanelLayoutComponent` provides a titled section with optional collapsing.
+- **Form:** Text field and textarea bind native fields and emit string values.
+  Select takes `SelectOption[]` (`label`, `value`); radio group takes a
+  required label and `RadioOption[]` (`label`, `value`). Switch and checkbox
+  emit checked state. Password has a visibility toggle; number emits a number
+  or `null`; date picker emits a native `YYYY-MM-DD` value; multi-select takes
+  `MultiSelectOption[]` and emits selected string values; file upload emits
+  selected `File[]` without uploading them; rating emits an integer; slider
+  emits a number. `AutocompleteFormComponent` uses a native datalist and emits
+  typed values. `ColorPickerFormComponent` wraps the native color input.
+  `ListboxFormComponent` renders a native single-select listbox. Native input
+  semantics and constraints are preserved.
+- **Data:** Table takes required `DataColumn[]` (`key`, `header`) and optional
+  `DataRow[]` of string/number values. List renders ordered or unordered string
+  items. Avatar shows a supplied image or accessible initials. Empty state
+  takes a title, optional description, and projected actions. Paginator takes
+  `total`, `pageSize`, and the zero-based current `page`, then emits valid
+  page indices. Timeline takes events with a title and optional description
+  and date. Carousel provides slide navigation, image renders required
+  alternative text with an optional caption, and tree renders hierarchical
+  groups.
+- **Control:** Text and icon buttons expose native button type and disabled
+  inputs and emit click events. The icon button takes a required accessible
+  name; `ButtonIcon` lists supported glyph names. Button group labels projected
+  controls. Link takes an `href` and supports safe external links. Toggle
+  button takes `pressed` and emits the next state. Split button combines a
+  primary action with a menu of labelled secondary actions.
+- **Message:** `ChipMessageComponent` renders a labelled chip and can emit a
+  removal request.
+- **Misc:** Icon displays a decorative glyph hidden from assistive technology.
 
-`ButtonIcon` is exported from `ngblock` and is a union of the available icon
-names, so editors can suggest valid values: `add`, `check`, `close`, `delete`,
-`edit`, `favorite`, `home`, `menu`, `remove`, and `search`. The icon is hidden
-from assistive technology; `ariaLabel` provides the button's accessible name.
-The component uses the browser's default button styling.
+Most components intentionally use browser-native styling and semantics.
+`apps/showcase` is a runnable, styled example composed from the library.
 
-### Icon
+## Develop
 
-`IconComponent` is also exported from `ngblock` for displaying a glyph directly:
-
-```html
-<ngb-icon glyph="★" />
+```bash
+npm exec -- nx test ngblock
+npm exec -- nx lint ngblock
+npm exec -- nx build ngblock
+npm exec -- nx build-storybook ngblock
+npm exec -- nx serve showcase
 ```
 
-| Name | Kind | Type | Default |
-| --- | --- | --- | --- |
-| `glyph` | Input | `string` | Required |
+Storybook runs at `http://localhost:4400`. The showcase app runs at
+`http://localhost:4200`.
 
-The glyph is treated as decorative and hidden from assistive technology.
+The inventory is informed by the broad categories represented in
+[PrimeNG's component catalog](https://primeng.org/components). ngblock is an
+independent library with its own API and implementations; this is a practical
+selection, not a one-to-one port of PrimeNG.

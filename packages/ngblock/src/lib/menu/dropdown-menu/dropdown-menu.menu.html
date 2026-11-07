@@ -1,0 +1,16 @@
+<div>
+  <button
+    type="button"
+    aria-haspopup="menu"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggle()"
+    (keydown.escape)="close()"
+  >
+    {{ label() }}
+  </button>
+  @if (isOpen()) {
+  <div role="menu" tabindex="-1" (keydown.escape)="close()">
+    <ng-content />
+  </div>
+  }
+</div>

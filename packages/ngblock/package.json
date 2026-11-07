@@ -1,13 +1,43 @@
 {
   "name": "ngblock",
-  "version": "0.0.7",
-  "description": "An Angular library for ngblock.",
+  "version": "0.1.0",
+  "description": "A standalone Angular UI component library with accessible controls, forms, layout, and data components.",
   "license": "MIT",
+  "author": "Jakub Olejarczyk",
+  "homepage": "https://github.com/jakubolejarczyk/ngblock#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakubolejarczyk/ngblock.git",
+    "directory": "packages/ngblock"
+  },
+  "bugs": {
+    "url": "https://github.com/jakubolejarczyk/ngblock/issues"
+  },
+  "keywords": [
+    "angular",
+    "angular-components",
+    "ui",
+    "component-library",
+    "standalone",
+    "storybook",
+    "accessibility"
+  ],
+  "files": [
+    "fesm2022/",
+    "types/",
+    "styles.css",
+    "README.md",
+    "CHANGELOG.md",
+    "PUBLISHING.md",
+    "LICENSE"
+  ],
   "peerDependencies": {
     "@angular/common": "^22.2.0",
     "@angular/core": "^22.2.0"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "publishConfig": {
     "access": "public"
   }

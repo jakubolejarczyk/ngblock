@@ -1,0 +1,17 @@
+<ul role="tree">
+  @for (node of nodes(); track node.label) {
+  <li
+    role="treeitem"
+    aria-selected="false"
+    [attr.aria-expanded]="node.children?.length ? 'true' : null"
+  >
+    {{ node.label }} @if (node.children?.length) {
+    <ul role="group">
+      @for (child of node.children; track child.label) {
+      <li role="treeitem" aria-selected="false">{{ child.label }}</li>
+      }
+    </ul>
+    }
+  </li>
+  }
+</ul>
