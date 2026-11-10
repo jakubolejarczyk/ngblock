@@ -1,0 +1,16 @@
+<div class="ngb-form-field">
+  <label [for]="controlId()">
+    <span>
+      {{ label() }}
+      @if (required()) {
+        <span aria-hidden="true">*</span>
+      }
+    </span>
+  </label>
+  <ng-content select="[ngbFieldControl]" />
+  @if (error()) {
+    <span class="ngb-form-field-error" aria-live="polite">{{ error() }}</span>
+  } @else if (hint()) {
+    <span class="ngb-form-field-hint">{{ hint() }}</span>
+  }
+</div>

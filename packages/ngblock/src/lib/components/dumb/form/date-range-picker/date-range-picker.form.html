@@ -1,0 +1,25 @@
+<fieldset>
+  <legend>{{ label() }}</legend>
+  <label>
+    Start date
+    <input
+      type="date"
+      [value]="start()"
+      [min]="min()"
+      [max]="end() || max()"
+      [disabled]="disabled()"
+      (change)="onChange($event, 'start')"
+    />
+  </label>
+  <label>
+    End date
+    <input
+      type="date"
+      [value]="end()"
+      [min]="start() || min()"
+      [max]="max()"
+      [disabled]="disabled()"
+      (change)="onChange($event, 'end')"
+    />
+  </label>
+</fieldset>

@@ -1,0 +1,18 @@
+<div
+  class="flex"
+  [style.flex-direction]="direction()"
+  [style.flex-wrap]="wrap()"
+  [style.justify-content]="
+    justify() === 'between'
+      ? 'space-between'
+      : justify() === 'around'
+        ? 'space-around'
+        : justify() === 'evenly'
+          ? 'space-evenly'
+          : justify()
+  "
+  [style.align-items]="align()"
+  [style.gap]="gap()"
+>
+  <ng-content />
+</div>

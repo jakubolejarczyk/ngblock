@@ -3,7 +3,7 @@
 An Angular UI library of standalone components for overlays, messages, menus,
 layout, forms, data, and controls. The component package is in
 [packages/ngblock](./packages/ngblock/README.md); its Storybook includes
-interactive examples for each component. The current catalog contains 56
+interactive examples for each component. The current catalog contains 64
 components informed by the breadth of libraries such as
 [PrimeNG](https://primeng.org/components), while keeping ngblock's own
 standalone APIs and implementations.

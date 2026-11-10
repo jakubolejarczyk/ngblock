@@ -61,6 +61,9 @@ ngb-text-field-form,
 ngb-password-form,
 ngb-number-form,
 ngb-date-picker-form,
+ngb-date-range-picker-form,
+ngb-time-picker-form,
+ngb-form-field-form,
 ngb-select-form,
 ngb-multi-select-form,
 ngb-listbox-form,
@@ -73,6 +76,8 @@ ngb-rating-form,
 ngb-slider-form,
 ngb-file-upload-form,
 ngb-card-layout,
+ngb-flex-layout,
+ngb-grid-layout,
 ngb-panel-layout,
 ngb-toolbar-layout,
 ngb-alert-message,
@@ -92,6 +97,7 @@ ngb-image-data,
 ngb-avatar-data,
 ngb-paginator-data,
 ngb-dropdown-menu,
+ngb-responsive-navigation-menu,
 ngb-menubar-menu,
 ngb-breadcrumb-menu,
 ngb-tabs-menu,
@@ -116,6 +122,9 @@ ngb-text-field-form,
 ngb-password-form,
 ngb-number-form,
 ngb-date-picker-form,
+ngb-date-range-picker-form,
+ngb-time-picker-form,
+ngb-form-field-form,
 ngb-select-form,
 ngb-multi-select-form,
 ngb-listbox-form,
@@ -127,6 +136,9 @@ ngb-switch-form,
 ngb-rating-form,
 ngb-slider-form,
 ngb-file-upload-form,
+ngb-flex-layout,
+ngb-grid-layout,
+ngb-responsive-navigation-menu,
 ngb-card-layout,
 ngb-panel-layout,
 ngb-toolbar-layout,
@@ -154,6 +166,14 @@ ngb-accordion-menu {
   display: block;
 }
 
+ngb-flex-layout .flex {
+  display: flex;
+}
+
+ngb-grid-layout .grid {
+  display: grid;
+}
+
 ngb-button-text-control button,
 ngb-button-icon-control button,
 ngb-toggle-button-control button,
@@ -166,6 +186,7 @@ ngb-rating-form button,
 ngb-password-form button,
 ngb-dropdown-menu > div > button,
 ngb-dropdown-menu [role='menu'] button,
+ngb-responsive-navigation-menu .menu-toggle,
 ngb-accordion-menu h3 button,
 ngb-tabs-menu [role='tab'],
 ngb-steps-menu button,
@@ -259,6 +280,8 @@ ngb-carousel-data button:focus-visible,
 ngb-rating-form button:focus-visible,
 ngb-password-form button:focus-visible,
 ngb-dropdown-menu button:focus-visible,
+ngb-responsive-navigation-menu .menu-toggle:focus-visible,
+ngb-responsive-navigation-menu a:focus-visible,
 ngb-accordion-menu button:focus-visible,
 ngb-tabs-menu button:focus-visible,
 ngb-steps-menu button:focus-visible,
@@ -284,6 +307,78 @@ ngb-steps-menu button:disabled,
 ngb-menubar-menu button:disabled {
   opacity: 0.48;
   cursor: not-allowed;
+}
+
+ngb-responsive-navigation-menu nav {
+  position: relative;
+}
+
+ngb-responsive-navigation-menu .menu-toggle {
+  display: none;
+}
+
+ngb-responsive-navigation-menu ul {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ngb-responsive-navigation-menu a {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  padding-inline: 0.75rem;
+  border-radius: var(--ngb-radius-sm);
+  color: var(--ngb-color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+ngb-responsive-navigation-menu a:hover {
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-primary);
+}
+
+ngb-responsive-navigation-menu .menu-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+@media (max-width: 48rem) {
+  ngb-responsive-navigation-menu .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  ngb-responsive-navigation-menu ul {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    display: none;
+    min-width: 13rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid var(--ngb-color-border);
+    border-radius: var(--ngb-radius-md);
+    background: var(--ngb-color-canvas);
+    box-shadow: var(--ngb-shadow-md);
+  }
+
+  ngb-responsive-navigation-menu nav[data-open='true'] ul {
+    display: flex;
+  }
+
+  ngb-responsive-navigation-menu a {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 ngb-text-field-form label,

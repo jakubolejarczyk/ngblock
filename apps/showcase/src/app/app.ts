@@ -16,13 +16,17 @@ import {
   ColorPickerFormComponent,
   ConfirmDialogOverlayComponent,
   ContainerLayoutComponent,
+  ContextMenuSmartComponent,
   DatePickerFormComponent,
+  DateRangePickerFormSmartComponent,
   DialogOverlayComponent,
   DividerLayoutComponent,
   DrawerOverlayComponent,
-  DropdownMenuComponent,
   EmptyStateDataComponent,
   FileUploadFormComponent,
+  FlexLayoutComponent,
+  FormFieldFormSmartComponent,
+  GridLayoutComponent,
   IconComponent,
   ImageDataComponent,
   ListboxFormComponent,
@@ -38,6 +42,7 @@ import {
   ProgressMessageComponent,
   RatingFormComponent,
   RadioGroupFormComponent,
+  ResponsiveNavigationMenuSmartComponent,
   SelectFormComponent,
   SkeletonMessageComponent,
   SliderFormComponent,
@@ -50,6 +55,7 @@ import {
   TabsMenuComponent,
   TextareaFormComponent,
   TextFieldFormComponent,
+  TimePickerFormSmartComponent,
   TimelineDataComponent,
   ToastMessageComponent,
   ToggleButtonComponent,
@@ -78,13 +84,17 @@ import {
     ColorPickerFormComponent,
     ConfirmDialogOverlayComponent,
     ContainerLayoutComponent,
+    ContextMenuSmartComponent,
     DatePickerFormComponent,
+    DateRangePickerFormSmartComponent,
     DialogOverlayComponent,
     DividerLayoutComponent,
     DrawerOverlayComponent,
-    DropdownMenuComponent,
     EmptyStateDataComponent,
     FileUploadFormComponent,
+    FlexLayoutComponent,
+    FormFieldFormSmartComponent,
+    GridLayoutComponent,
     IconComponent,
     ImageDataComponent,
     ListboxFormComponent,
@@ -100,6 +110,7 @@ import {
     ProgressMessageComponent,
     RatingFormComponent,
     RadioGroupFormComponent,
+    ResponsiveNavigationMenuSmartComponent,
     SelectFormComponent,
     SkeletonMessageComponent,
     SliderFormComponent,
@@ -112,6 +123,7 @@ import {
     TabsMenuComponent,
     TextareaFormComponent,
     TextFieldFormComponent,
+    TimePickerFormSmartComponent,
     TimelineDataComponent,
     ToastMessageComponent,
     ToggleButtonComponent,
@@ -135,6 +147,10 @@ export class App {
   readonly country = signal('ca');
   readonly seats = signal<number | null>(8);
   readonly startDate = signal('2026-11-07');
+  readonly dateRange = signal({ start: '2026-11-10', end: '2026-11-14' });
+  readonly appointmentTime = signal('09:30');
+  readonly contactEmail = signal('jordan@example.com');
+  readonly contextAction = signal('No action selected');
   readonly skills = signal<readonly string[]>(['angular']);
   readonly rating = signal(4);
   readonly volume = signal(65);
@@ -172,6 +188,10 @@ export class App {
         ? 'No files selected'
         : `${files.length} file${files.length === 1 ? '' : 's'} selected`,
     );
+  }
+
+  onContactEmailInput(event: Event): void {
+    this.contactEmail.set((event.target as HTMLInputElement).value);
   }
 
   save(): void {

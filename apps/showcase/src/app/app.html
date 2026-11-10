@@ -3,10 +3,16 @@
     <ngb-icon glyph="◆" />
     <span>ngblock</span>
   </a>
-  <ngb-dropdown-menu label="Quick links">
-    <button role="menuitem" type="button">Components</button>
-    <button role="menuitem" type="button">Documentation</button>
-  </ngb-dropdown-menu>
+  <ngb-responsive-navigation-menu-smart
+    label="Main navigation"
+    menuLabel="Navigation"
+    [items]="[
+      { label: 'Layout', href: '#layout-title' },
+      { label: 'Forms', href: '#form-title' },
+      { label: 'Data', href: '#data-title' },
+      { label: 'Components', href: '#more-components-title' }
+    ]"
+  />
 </header>
 
 <main class="showcase-shell" [attr.data-theme]="theme()">
@@ -47,7 +53,7 @@
 
     <section class="showcase-section" aria-labelledby="feedback-title">
       <h2 id="feedback-title">Messages and feedback</h2>
-      <div class="grid">
+      <ngb-grid-layout minItemWidth="22rem">
         <ngb-card-layout title="Status">
           <ngb-stack-layout>
             <ngb-alert-message type="info"
@@ -83,12 +89,12 @@
             >
           </ngb-stack-layout>
         </ngb-card-layout>
-      </div>
+      </ngb-grid-layout>
     </section>
 
     <section class="showcase-section" aria-labelledby="layout-title">
       <h2 id="layout-title">Layout and navigation</h2>
-      <div class="grid">
+      <ngb-grid-layout minItemWidth="22rem">
         <ngb-card-layout title="Navigation patterns">
           <ngb-stack-layout>
             <ngb-tabs-menu
@@ -108,28 +114,33 @@
           </ngb-stack-layout>
         </ngb-card-layout>
         <ngb-card-layout title="Flexible layout">
-          <ngb-stack-layout direction="horizontal" gap="0.75rem">
+          <ngb-flex-layout
+            direction="row"
+            wrap="wrap"
+            justify="between"
+            gap="0.75rem"
+          >
             <ngb-avatar-data name="Jordan Lee" />
             <ngb-avatar-data name="Casey Kim" />
             <ngb-avatar-data name="Riley Chen" />
-          </ngb-stack-layout>
+          </ngb-flex-layout>
           <ngb-divider-layout />
-          <ngb-stack-layout direction="horizontal">
+          <ngb-flex-layout direction="row" wrap="wrap" gap="1rem">
             <ngb-tooltip-overlay text="A helpful hint"
               >Hover or focus for a tooltip</ngb-tooltip-overlay
             >
             <ngb-popover-overlay label="More info"
               >Popover content for this section.</ngb-popover-overlay
             >
-          </ngb-stack-layout>
+          </ngb-flex-layout>
         </ngb-card-layout>
-      </div>
+      </ngb-grid-layout>
     </section>
 
     <section class="showcase-section" aria-labelledby="form-title">
       <h2 id="form-title">A working profile form</h2>
       <ngb-card-layout title="Profile settings">
-        <div class="form-grid">
+        <ngb-grid-layout minItemWidth="17rem" gap="1.25rem">
           <ngb-text-field-form
             label="Full name"
             [value]="name()"
@@ -183,13 +194,13 @@
               >Save profile</ngb-button-text-control
             >
           </ngb-stack-layout>
-        </div>
+        </ngb-grid-layout>
       </ngb-card-layout>
     </section>
 
     <section class="showcase-section" aria-labelledby="data-title">
       <h2 id="data-title">Data and empty states</h2>
-      <div class="grid">
+      <ngb-grid-layout minItemWidth="22rem">
         <ngb-card-layout title="Team members">
           <ngb-table-data
             caption="Team members"
@@ -220,13 +231,18 @@
             ]"
           />
         </ngb-card-layout>
-      </div>
+      </ngb-grid-layout>
     </section>
 
     <section class="showcase-section" aria-labelledby="controls-title">
       <h2 id="controls-title">Controls and overlays</h2>
       <ngb-card-layout title="Actions">
-        <ngb-stack-layout direction="horizontal" gap="0.75rem">
+        <ngb-flex-layout
+          direction="row"
+          wrap="wrap"
+          gap="0.75rem"
+          align="center"
+        >
           <ngb-button-text-control (clicked)="dialogOpen.set(true)"
             >Open dialog</ngb-button-text-control
           >
@@ -250,7 +266,7 @@
           <ngb-link-control href="https://angular.dev" [external]="true"
             >Angular</ngb-link-control
           >
-        </ngb-stack-layout>
+        </ngb-flex-layout>
       </ngb-card-layout>
       <ngb-dialog-overlay
         [open]="dialogOpen()"
@@ -288,7 +304,7 @@
             >Clear description</ngb-button-text-control
           >
         </ngb-toolbar-layout>
-        <div class="form-grid">
+        <ngb-grid-layout minItemWidth="17rem" gap="1.25rem">
           <ngb-password-form
             label="Account password"
             [value]="password()"
@@ -333,13 +349,78 @@
             (selected)="onFilesSelected($event)"
           />
           <p aria-live="polite">{{ uploadMessage() }}</p>
-        </div>
+        </ngb-grid-layout>
       </ngb-card-layout>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="new-components-title">
+      <h2 id="new-components-title">New components</h2>
+      <p class="section-intro">
+        A few more building blocks, shown with live values and interactions.
+      </p>
+      <ngb-grid-layout minItemWidth="19rem">
+        <ngb-card-layout title="Form field">
+          <ngb-form-field-form-smart
+            label="Contact email"
+            controlId="showcase-contact-email"
+            hint="We'll only use this for workspace updates."
+            [required]="true"
+          >
+            <input
+              ngbFieldControl
+              id="showcase-contact-email"
+              type="email"
+              [value]="contactEmail()"
+              (input)="onContactEmailInput($event)"
+              required
+            />
+          </ngb-form-field-form-smart>
+        </ngb-card-layout>
+
+        <ngb-card-layout title="Date range">
+          <ngb-date-range-picker-form-smart
+            label="Project dates"
+            [value]="dateRange()"
+            (changed)="dateRange.set($event)"
+          />
+          <p class="component-value">
+            Selected: {{ dateRange().start }} – {{ dateRange().end }}
+          </p>
+        </ngb-card-layout>
+
+        <ngb-card-layout title="Time picker">
+          <ngb-time-picker-form-smart
+            label="Daily stand-up"
+            [value]="appointmentTime()"
+            min="08:00"
+            max="18:00"
+            (changed)="appointmentTime.set($event)"
+          />
+          <p class="component-value">
+            Selected time: {{ appointmentTime() }}
+          </p>
+        </ngb-card-layout>
+
+        <ngb-card-layout title="Context menu">
+          <ngb-context-menu-smart
+            label="Project actions"
+            [items]="[
+              { label: 'Edit project' },
+              { label: 'Duplicate project' },
+              { label: 'Archive project', disabled: true }
+            ]"
+            (selected)="contextAction.set($event.label)"
+          />
+          <p class="component-value" aria-live="polite">
+            Last action: {{ contextAction() }}
+          </p>
+        </ngb-card-layout>
+      </ngb-grid-layout>
     </section>
 
     <section class="showcase-section" aria-labelledby="more-components-title">
       <h2 id="more-components-title">More components</h2>
-      <div class="grid">
+      <ngb-grid-layout minItemWidth="22rem">
         <ngb-card-layout title="Search and selection">
           <ngb-stack-layout>
             <ngb-autocomplete-form
@@ -415,7 +496,7 @@
             caption="A new day in the mountains."
           />
         </ngb-card-layout>
-      </div>
+      </ngb-grid-layout>
     </section>
   </ngb-container-layout>
 </main>

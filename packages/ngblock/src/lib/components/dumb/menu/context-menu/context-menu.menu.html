@@ -1,0 +1,25 @@
+<div>
+  <button
+    type="button"
+    aria-haspopup="menu"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggle()"
+    (keydown.escape)="close()"
+  >
+    {{ label() }}
+  </button>
+  @if (isOpen()) {
+    <div role="menu" tabindex="-1" (keydown.escape)="close()">
+      @for (item of items(); track $index) {
+        <button
+          type="button"
+          role="menuitem"
+          [disabled]="item.disabled ?? false"
+          (click)="select(item)"
+        >
+          {{ item.label }}
+        </button>
+      }
+    </div>
+  }
+</div>

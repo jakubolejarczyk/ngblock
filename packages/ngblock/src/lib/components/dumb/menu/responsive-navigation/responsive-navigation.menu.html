@@ -1,0 +1,21 @@
+<nav
+  [attr.aria-label]="label()"
+  [attr.data-open]="isOpen()"
+>
+  <button
+    class="menu-toggle"
+    type="button"
+    [attr.aria-label]="isOpen() ? 'Close ' + menuLabel() : 'Open ' + menuLabel()"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggle()"
+    (keydown.escape)="close()"
+  >
+    <span class="menu-icon" aria-hidden="true">{{ isOpen() ? '×' : '☰' }}</span>
+    <span>{{ menuLabel() }}</span>
+  </button>
+  <ul tabindex="-1" (keydown.escape)="close()">
+    @for (item of items(); track item.href) {
+      <li><a [href]="item.href" (click)="close()">{{ item.label }}</a></li>
+    }
+  </ul>
+</nav>
