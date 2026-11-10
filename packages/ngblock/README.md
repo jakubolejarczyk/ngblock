@@ -18,10 +18,15 @@ be styled by the consuming application.
 | Control | Button group, checkbox, icon button, link, split button, text button, toggle button                                                                              |
 | Misc    | Icon                                                                                                                                                             |
 
-Components live under `src/lib/components/<group>/<component>/` and use the
-`<component-name>.<type>.<extension>` naming convention. Each component is
-exported from the package entry point, has a focused spec, and has Storybook
-stories under its source folder.
+Components live under `src/lib/components/dumb/<group>/<component>/` or
+`src/lib/components/smart/<group>/<component>/` and use the
+`<component-name>.<type>.<extension>` naming convention. Dumb components render
+UI and emit user interactions; smart components coordinate data and application
+logic. The current component catalog is presentational and lives under `dumb`.
+Components are exported from the package entry point, have focused specs in the
+`dumb` tree, and have Storybook stories in the matching `smart` tree. Smart
+components compose their dumb counterpart, own controlled interaction state,
+and forward user events to the consuming application.
 
 ## Use
 
