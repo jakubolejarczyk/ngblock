@@ -18,7 +18,7 @@ be styled by the consuming application.
 | Control | Button group, checkbox, icon button, link, split button, text button, toggle button                                                                              |
 | Misc    | Icon                                                                                                                                                             |
 
-Components live under `src/lib/<group>/<component>/` and use the
+Components live under `src/lib/components/<group>/<component>/` and use the
 `<component-name>.<type>.<extension>` naming convention. Each component is
 exported from the package entry point, has a focused spec, and has Storybook
 stories under its source folder.
