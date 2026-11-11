@@ -22,6 +22,7 @@ import {
   DialogOverlayComponent,
   DividerLayoutComponent,
   DrawerOverlayComponent,
+  DropdownMenuSmartComponent,
   EmptyStateDataComponent,
   FileUploadFormComponent,
   FlexLayoutComponent,
@@ -64,7 +65,7 @@ import {
   TreeDataComponent,
   type DataColumn,
   type DataRow,
-} from '@org/ngblock';
+} from '../src';
 
 @Component({
   imports: [
@@ -90,6 +91,7 @@ import {
     DialogOverlayComponent,
     DividerLayoutComponent,
     DrawerOverlayComponent,
+    DropdownMenuSmartComponent,
     EmptyStateDataComponent,
     FileUploadFormComponent,
     FlexLayoutComponent,
@@ -131,11 +133,11 @@ import {
     TooltipOverlayComponent,
     TreeDataComponent,
   ],
-  selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  selector: 'ngb-showcase-presentation',
+  templateUrl: './ngblock-showcase.component.html',
+  styleUrl: './ngblock-showcase.component.css',
 })
-export class App {
+export class NgblockShowcaseComponent {
   readonly name = signal('Jordan Lee');
   readonly theme = signal<'default' | 'ocean'>('default');
   readonly email = signal('jordan@example.com');

@@ -456,6 +456,11 @@
                 { label: 'Settings' }
               ]"
             />
+            <ngb-dropdown-menu-smart label="Project actions">
+              <button role="menuitem" type="button">Open project</button>
+              <button role="menuitem" type="button">Duplicate project</button>
+              <button role="menuitem" type="button">Archive project</button>
+            </ngb-dropdown-menu-smart>
             <ngb-steps-menu
               [steps]="[
                 { label: 'Account' },
@@ -484,7 +489,7 @@
         <ngb-panel-layout title="Project structure" [collapsible]="true">
           <ngb-tree-data
             [nodes]="[
-              { label: 'Applications', children: [{ label: 'Showcase' }, { label: 'Storybook' }] },
+              { label: 'Components', children: [{ label: 'Controls' }, { label: 'Forms' }, { label: 'Layout' }] },
               { label: 'Packages', children: [{ label: 'ngblock' }] }
             ]"
           />

@@ -32,6 +32,10 @@
         "port": 4400,
         "configDir": "packages/ngblock/.storybook",
         "browserTarget": "ngblock:build-storybook",
+        "styles": [
+          "packages/ngblock/src/styles.css",
+          "packages/ngblock/.storybook/preview.css"
+        ],
         "compodoc": false
       },
       "configurations": {
@@ -47,6 +51,10 @@
         "outputDir": "dist/storybook/ngblock",
         "configDir": "packages/ngblock/.storybook",
         "browserTarget": "ngblock:build-storybook",
+        "styles": [
+          "packages/ngblock/src/styles.css",
+          "packages/ngblock/.storybook/preview.css"
+        ],
         "compodoc": false
       },
       "configurations": {

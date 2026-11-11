@@ -30,9 +30,10 @@ Components live under `src/lib/components/dumb/<group>/<component>/` or
 UI and emit user interactions; smart components coordinate data and application
 logic. The current component catalog is presentational and lives under `dumb`.
 Components are exported from the package entry point, have focused specs in the
-`dumb` tree, and have Storybook stories in the matching `smart` tree. Smart
-components compose their dumb counterpart, own controlled interaction state,
-and forward user events to the consuming application.
+`dumb` tree, and have individual Storybook stories in the matching `smart` tree.
+Storybook also includes an all-components presentation page. Smart components
+compose their dumb counterpart, own controlled interaction state, and forward
+user events to the consuming application.
 
 ## Use
 
@@ -69,9 +70,9 @@ For example:
 
 The palette includes semantic tokens for primary, success, warning, danger,
 info, muted text, borders, overlays, focus, radii, shadows, and component
-surfaces. The showcase's **Use ocean palette** button demonstrates scoping
-overrides to one application region. See [PUBLISHING.md](./PUBLISHING.md) for
-release instructions.
+surfaces. The Storybook presentation's **Use ocean palette** button
+demonstrates scoping overrides to one page region. See
+[PUBLISHING.md](./PUBLISHING.md) for release instructions.
 
 | Category          | CSS variables                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -229,8 +230,8 @@ application requires them.
 | ---------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------- |
 | `ngb-icon` | Decorative glyph hidden from assistive technology; pair it with visible text or an accessible label on its parent control. | Required `glyph`. |
 
-`apps/showcase` demonstrates the components together. Storybook provides
-isolated interactive examples for each component.
+Storybook provides isolated interactive examples for each component and an
+all-in-one presentation page.
 
 ## Develop
 
@@ -239,11 +240,9 @@ npm exec -- nx test ngblock
 npm exec -- nx lint ngblock
 npm exec -- nx build ngblock
 npm exec -- nx build-storybook ngblock
-npm exec -- nx serve showcase
 ```
 
-Storybook runs at `http://localhost:4400`. The showcase app runs at
-`http://localhost:4200`.
+Storybook runs at `http://localhost:4400`.
 
 The inventory is informed by the broad categories represented in
 [PrimeNG's component catalog](https://primeng.org/components). ngblock is an

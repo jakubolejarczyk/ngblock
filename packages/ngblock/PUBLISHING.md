@@ -20,7 +20,6 @@ This package is published from the Angular Package Format output generated in
 
    ```bash
    npm exec -- nx run-many --targets=test,lint,build,build-storybook --projects=ngblock
-   npm exec -- nx run-many --targets=test,lint,build --projects=showcase
    ```
 
 5. Inspect the exact package contents without publishing:
