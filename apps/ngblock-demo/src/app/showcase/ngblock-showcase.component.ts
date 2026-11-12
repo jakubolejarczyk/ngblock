@@ -65,7 +65,7 @@ import {
   TreeDataComponent,
   type DataColumn,
   type DataRow,
-} from '../src';
+} from '@org/ngblock';
 
 @Component({
   imports: [
@@ -133,7 +133,7 @@ import {
     TooltipOverlayComponent,
     TreeDataComponent,
   ],
-  selector: 'ngb-showcase-presentation',
+  selector: 'app-ngblock-showcase-presentation',
   templateUrl: './ngblock-showcase.component.html',
   styleUrl: './ngblock-showcase.component.scss',
 })

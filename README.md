@@ -3,19 +3,20 @@
 An Angular UI library of standalone components for overlays, messages, menus,
 layout, forms, data, and controls. The component package is in
 [packages/ngblock](./packages/ngblock/README.md); its Storybook includes
-interactive examples for each component and a single-page presentation of the
-full catalog. The current catalog contains 64 components informed by the
+interactive examples for each component, and the workspace demo app presents
+the full catalog. The current catalog contains 64 components informed by the
 breadth of libraries such as [PrimeNG](https://primeng.org/components), while
 keeping ngblock's own standalone APIs and implementations.
 
-## Run the component presentation
+## Run the component demo
 
 ```bash
-npm exec -- nx storybook ngblock
+npm exec -- nx serve ngblock-demo
 ```
 
-Open `http://localhost:4400` and select **Showcase / All Components** to see
-the components together in one interactive page.
+Open `http://localhost:4300` to try the full component catalog in one
+interactive Angular application. Run `npm exec -- nx storybook ngblock` for
+individual component stories.
 
 ## Develop the library
 

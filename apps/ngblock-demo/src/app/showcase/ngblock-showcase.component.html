@@ -10,7 +10,7 @@
       { label: 'Layout', href: '#layout-title' },
       { label: 'Forms', href: '#form-title' },
       { label: 'Data', href: '#data-title' },
-      { label: 'Components', href: '#more-components-title' }
+      { label: 'Components', href: '#more-components-title' },
     ]"
   />
 </header>
@@ -22,10 +22,7 @@
     </ngb-button-text-control>
     <section class="hero">
       <ngb-breadcrumb-menu
-        [items]="[
-        { label: 'Home', href: '#' },
-        { label: 'Showcase' }
-      ]"
+        [items]="[{ label: 'Home', href: '#' }, { label: 'Showcase' }]"
       />
       <ngb-stack-layout gap="1rem">
         <ngb-badge-message tone="success"
@@ -76,13 +73,13 @@
               >Advance progress</ngb-button-text-control
             >
             @if (toastVisible()) {
-            <ngb-toast-message
-              title="Changes saved"
-              type="success"
-              (dismissed)="toastVisible.set(false)"
-            >
-              Your progress has been saved.
-            </ngb-toast-message>
+              <ngb-toast-message
+                title="Changes saved"
+                type="success"
+                (dismissed)="toastVisible.set(false)"
+              >
+                Your progress has been saved.
+              </ngb-toast-message>
             }
             <ngb-button-text-control (clicked)="toastVisible.set(true)"
               >Show toast</ngb-button-text-control
@@ -99,16 +96,31 @@
           <ngb-stack-layout>
             <ngb-tabs-menu
               [tabs]="[
-                { id: 'overview', label: 'Overview', content: 'A quick summary of your workspace.' },
-                { id: 'activity', label: 'Activity', content: 'Recent updates from your team.' }
+                {
+                  id: 'overview',
+                  label: 'Overview',
+                  content: 'A quick summary of your workspace.',
+                },
+                {
+                  id: 'activity',
+                  label: 'Activity',
+                  content: 'Recent updates from your team.',
+                },
               ]"
               (selected)="selectedTab.set($event)"
             />
             <p>Selected tab: {{ selectedTab() }}</p>
             <ngb-accordion-menu
               [items]="[
-                { title: 'What is ngblock?', content: 'An Angular UI component library.' },
-                { title: 'Can I customize it?', content: 'Yes. Components are standalone and compose with native elements.' }
+                {
+                  title: 'What is ngblock?',
+                  content: 'An Angular UI component library.',
+                },
+                {
+                  title: 'Can I customize it?',
+                  content:
+                    'Yes. Components are standalone and compose with native elements.',
+                },
               ]"
             />
           </ngb-stack-layout>
@@ -158,7 +170,7 @@
             [options]="[
               { label: 'Canada', value: 'ca' },
               { label: 'France', value: 'fr' },
-              { label: 'Japan', value: 'jp' }
+              { label: 'Japan', value: 'jp' },
             ]"
             [value]="country()"
             (changed)="country.set($event)"
@@ -168,7 +180,7 @@
             name="showcase-plan"
             [options]="[
               { label: 'Starter', value: 'starter' },
-              { label: 'Team', value: 'team' }
+              { label: 'Team', value: 'team' },
             ]"
             [value]="plan()"
             (changed)="plan.set($event)"
@@ -216,7 +228,11 @@
         </ngb-card-layout>
         <ngb-card-layout title="Recent activity">
           <ngb-list-data
-            [items]="['Jordan updated the design system', 'Casey added a new component', 'Riley reviewed the release']"
+            [items]="[
+              'Jordan updated the design system',
+              'Casey added a new component',
+              'Riley reviewed the release',
+            ]"
           />
           <ngb-empty-state-data
             title="No more activity"
@@ -226,8 +242,16 @@
         <ngb-card-layout title="Project timeline">
           <ngb-timeline-data
             [events]="[
-              { title: 'Project created', date: 'Today', description: 'Workspace is ready.' },
-              { title: 'Team invited', date: 'Yesterday', description: 'Two people joined.' }
+              {
+                title: 'Project created',
+                date: 'Today',
+                description: 'Workspace is ready.',
+              },
+              {
+                title: 'Team invited',
+                date: 'Yesterday',
+                description: 'Two people joined.',
+              },
             ]"
           />
         </ngb-card-layout>
@@ -327,7 +351,7 @@
             [options]="[
               { label: 'Angular', value: 'angular' },
               { label: 'TypeScript', value: 'typescript' },
-              { label: 'Accessibility', value: 'a11y' }
+              { label: 'Accessibility', value: 'a11y' },
             ]"
             [value]="skills()"
             (changed)="skills.set($event)"
@@ -396,9 +420,7 @@
             max="18:00"
             (changed)="appointmentTime.set($event)"
           />
-          <p class="component-value">
-            Selected time: {{ appointmentTime() }}
-          </p>
+          <p class="component-value">Selected time: {{ appointmentTime() }}</p>
         </ngb-card-layout>
 
         <ngb-card-layout title="Context menu">
@@ -407,7 +429,7 @@
             [items]="[
               { label: 'Edit project' },
               { label: 'Duplicate project' },
-              { label: 'Archive project', disabled: true }
+              { label: 'Archive project', disabled: true },
             ]"
             (selected)="contextAction.set($event.label)"
           />
@@ -434,7 +456,7 @@
               [options]="[
                 { label: 'Design', value: 'design' },
                 { label: 'Engineering', value: 'engineering' },
-                { label: 'Research', value: 'research' }
+                { label: 'Research', value: 'research' },
               ]"
               [value]="workspace()"
               (changed)="workspace.set($event)"
@@ -453,7 +475,7 @@
               [items]="[
                 { label: 'Overview', href: '#' },
                 { label: 'Projects', href: '#projects' },
-                { label: 'Settings' }
+                { label: 'Settings' },
               ]"
             />
             <ngb-dropdown-menu-smart label="Project actions">
@@ -465,7 +487,7 @@
               [steps]="[
                 { label: 'Account' },
                 { label: 'Preferences' },
-                { label: 'Finish' }
+                { label: 'Finish' },
               ]"
               [activeIndex]="onboardingStep()"
               (activeIndexChange)="onboardingStep.set($event)"
@@ -473,14 +495,14 @@
             <ngb-carousel-data
               [slides]="[
                 { title: 'Build', description: 'Compose reusable components.' },
-                { title: 'Share', description: 'Document your design system.' }
+                { title: 'Share', description: 'Document your design system.' },
               ]"
             />
             <ngb-split-button-control
               label="Save"
               [options]="[
                 { label: 'Save as draft', value: 'draft' },
-                { label: 'Save and close', value: 'close' }
+                { label: 'Save and close', value: 'close' },
               ]"
               (action)="save()"
             />
@@ -489,8 +511,15 @@
         <ngb-panel-layout title="Project structure" [collapsible]="true">
           <ngb-tree-data
             [nodes]="[
-              { label: 'Components', children: [{ label: 'Controls' }, { label: 'Forms' }, { label: 'Layout' }] },
-              { label: 'Packages', children: [{ label: 'ngblock' }] }
+              {
+                label: 'Components',
+                children: [
+                  { label: 'Controls' },
+                  { label: 'Forms' },
+                  { label: 'Layout' },
+                ],
+              },
+              { label: 'Packages', children: [{ label: 'ngblock' }] },
             ]"
           />
         </ngb-panel-layout>
