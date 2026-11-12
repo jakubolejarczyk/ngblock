@@ -135,7 +135,7 @@ import {
   ],
   selector: 'ngb-showcase-presentation',
   templateUrl: './ngblock-showcase.component.html',
-  styleUrl: './ngblock-showcase.component.css',
+  styleUrl: './ngblock-showcase.component.scss',
 })
 export class NgblockShowcaseComponent {
   readonly name = signal('Jordan Lee');

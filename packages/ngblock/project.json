@@ -6,8 +6,16 @@
   "projectType": "library",
   "tags": ["scope:shared"],
   "targets": {
+    "build-styles": {
+      "executor": "nx:run-commands",
+      "outputs": ["{workspaceRoot}/packages/ngblock/.generated/styles.css"],
+      "options": {
+        "command": "node -e \"require('node:fs').mkdirSync('packages/ngblock/.generated', { recursive: true })\" && sass packages/ngblock/src/styles.scss packages/ngblock/.generated/styles.css --no-source-map"
+      }
+    },
     "build": {
       "executor": "@nx/angular:package",
+      "dependsOn": ["build-styles"],
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "defaultConfiguration": "production",
       "options": {
@@ -33,8 +41,8 @@
         "configDir": "packages/ngblock/.storybook",
         "browserTarget": "ngblock:build-storybook",
         "styles": [
-          "packages/ngblock/src/styles.css",
-          "packages/ngblock/.storybook/preview.css"
+          "packages/ngblock/src/styles.scss",
+          "packages/ngblock/.storybook/preview.scss"
         ],
         "compodoc": false
       },
@@ -52,8 +60,8 @@
         "configDir": "packages/ngblock/.storybook",
         "browserTarget": "ngblock:build-storybook",
         "styles": [
-          "packages/ngblock/src/styles.css",
-          "packages/ngblock/.storybook/preview.css"
+          "packages/ngblock/src/styles.scss",
+          "packages/ngblock/.storybook/preview.scss"
         ],
         "compodoc": false
       },

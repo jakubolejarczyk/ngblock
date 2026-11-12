@@ -1,0 +1,72 @@
+ngb-card-layout article,
+ngb-panel-layout section {
+  padding: 1.25rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-lg);
+  background: var(--ngb-color-canvas);
+  box-shadow: var(--ngb-shadow-sm);
+}
+
+ngb-card-layout h2,
+ngb-panel-layout h2 {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+ngb-panel-layout header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+ngb-toolbar-layout [role='toolbar'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+ngb-container-layout .container {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+ngb-container-layout .container[data-size='small'] {
+  max-width: 40rem;
+}
+
+ngb-container-layout .container[data-size='medium'] {
+  max-width: 56rem;
+}
+
+ngb-container-layout .container[data-size='large'] {
+  max-width: 72rem;
+}
+
+ngb-container-layout .container[data-size='full'] {
+  max-width: none;
+}
+
+ngb-stack-layout .stack {
+  display: flex;
+  gap: var(--ngb-stack-gap, 1rem);
+}
+
+ngb-stack-layout .stack[data-direction='horizontal'] {
+  flex-direction: row;
+  align-items: center;
+}
+
+ngb-stack-layout .stack[data-direction='vertical'] {
+  flex-direction: column;
+}
+
+ngb-toolbar-layout div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -1,0 +1,50 @@
+ngb-link-control a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ngb-color-primary);
+}
+
+ngb-link-control a:hover {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary-soft);
+}
+
+ngb-button-icon-control button:focus-visible,
+ngb-button-text-control button:focus-visible,
+ngb-toggle-button-control button:focus-visible,
+ngb-link-control a:focus-visible,
+ngb-button-group-control button:focus-visible,
+ngb-split-button-control button:focus-visible,
+ngb-paginator-data button:focus-visible,
+ngb-carousel-data button:focus-visible,
+ngb-rating-form button:focus-visible,
+ngb-password-form button:focus-visible,
+ngb-dropdown-menu button:focus-visible,
+ngb-responsive-navigation-menu .menu-toggle:focus-visible,
+ngb-responsive-navigation-menu a:focus-visible,
+ngb-accordion-menu button:focus-visible,
+ngb-tabs-menu button:focus-visible,
+ngb-steps-menu button:focus-visible,
+ngb-menubar-menu button:focus-visible {
+  outline: none;
+  box-shadow: var(--ngb-focus-ring);
+}
+
+ngb-button-icon-control button:disabled,
+ngb-button-text-control button:disabled,
+ngb-toggle-button-control button:disabled,
+ngb-link-control a[aria-disabled='true'],
+ngb-button-group-control button:disabled,
+ngb-split-button-control button:disabled,
+ngb-paginator-data button:disabled,
+ngb-carousel-data button:disabled,
+ngb-rating-form button:disabled,
+ngb-password-form button:disabled,
+ngb-dropdown-menu button:disabled,
+ngb-accordion-menu button:disabled,
+ngb-tabs-menu button:disabled,
+ngb-steps-menu button:disabled,
+ngb-menubar-menu button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}

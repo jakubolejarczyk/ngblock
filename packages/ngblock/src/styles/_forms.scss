@@ -1,0 +1,162 @@
+ngb-text-field-form label,
+ngb-password-form label,
+ngb-number-form label,
+ngb-date-picker-form label,
+ngb-select-form label,
+ngb-multi-select-form label,
+ngb-listbox-form label,
+ngb-textarea-form label,
+ngb-autocomplete-form label,
+ngb-color-picker-form label,
+ngb-file-upload-form label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ngb-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+ngb-text-field-form input,
+ngb-password-form input,
+ngb-number-form input,
+ngb-date-picker-form input,
+ngb-select-form select,
+ngb-multi-select-form select,
+ngb-listbox-form select,
+ngb-textarea-form textarea,
+ngb-autocomplete-form input,
+ngb-file-upload-form input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-sm);
+  background: var(--ngb-color-canvas);
+  color: var(--ngb-color-text);
+  font: inherit;
+  font-weight: 400;
+  box-shadow: var(--ngb-shadow-sm);
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+ngb-text-field-form input:focus,
+ngb-password-form input:focus,
+ngb-number-form input:focus,
+ngb-date-picker-form input:focus,
+ngb-select-form select:focus,
+ngb-multi-select-form select:focus,
+ngb-listbox-form select:focus,
+ngb-textarea-form textarea:focus,
+ngb-autocomplete-form input:focus,
+ngb-file-upload-form input:focus,
+ngb-color-picker-form input:focus,
+ngb-slider-form input:focus {
+  border-color: var(--ngb-color-primary);
+  outline: none;
+  box-shadow: var(--ngb-focus-ring);
+}
+
+ngb-text-field-form input::placeholder,
+ngb-password-form input::placeholder,
+ngb-number-form input::placeholder,
+ngb-textarea-form textarea::placeholder,
+ngb-autocomplete-form input::placeholder {
+  color: var(--ngb-color-placeholder);
+}
+
+ngb-text-field-form input:disabled,
+ngb-password-form input:disabled,
+ngb-number-form input:disabled,
+ngb-date-picker-form input:disabled,
+ngb-select-form select:disabled,
+ngb-multi-select-form select:disabled,
+ngb-textarea-form textarea:disabled,
+ngb-file-upload-form input:disabled {
+  background: var(--ngb-color-disabled);
+  color: var(--ngb-color-muted);
+  cursor: not-allowed;
+}
+
+ngb-password-form label > button {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ngb-color-primary);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+ngb-password-form label > button:focus-visible {
+  outline: none;
+  box-shadow: var(--ngb-focus-ring);
+}
+
+ngb-color-picker-form input {
+  width: 3.5rem;
+  height: 2.75rem;
+  padding: 0.25rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-sm);
+  background: var(--ngb-color-canvas);
+  cursor: pointer;
+}
+
+ngb-radio-group-form fieldset,
+ngb-rating-form fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0;
+  border: 0;
+}
+
+ngb-radio-group-form legend,
+ngb-rating-form legend {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+ngb-radio-group-form label,
+ngb-switch-form label,
+ngb-checkbox-control label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+}
+
+ngb-checkbox-control label,
+ngb-switch-form label {
+  display: inline-flex;
+}
+
+ngb-radio-group-form input,
+ngb-switch-form input,
+ngb-checkbox-control input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--ngb-color-primary);
+}
+
+ngb-switch-form input[role='switch'] {
+  width: 2.5rem;
+  height: 1.4rem;
+  accent-color: var(--ngb-color-primary);
+}
+
+ngb-slider-form label {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+ngb-slider-form input {
+  width: 100%;
+  accent-color: var(--ngb-color-primary);
+}

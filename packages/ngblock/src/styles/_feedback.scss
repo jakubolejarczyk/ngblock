@@ -1,0 +1,158 @@
+ngb-alert-message [role='status'],
+ngb-alert-message [role='alert'],
+ngb-toast-message > section {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--ngb-color-info-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-info-soft);
+  color: var(--ngb-color-info);
+}
+
+ngb-alert-message [role='status'][aria-live='polite'] {
+  border-color: var(--ngb-color-info-border);
+  background: var(--ngb-color-info-soft);
+  color: var(--ngb-color-info);
+}
+
+ngb-alert-message [role='status'][aria-live='assertive'],
+ngb-alert-message [role='alert'][aria-live='assertive'],
+ngb-alert-message [role='alert'] {
+  border-color: var(--ngb-color-danger-border);
+  background: var(--ngb-color-danger-soft);
+  color: var(--ngb-color-danger);
+}
+
+ngb-toast-message > section[data-type='success'] {
+  border-color: var(--ngb-color-success-border);
+  background: var(--ngb-color-success-soft);
+  color: var(--ngb-color-success);
+}
+
+ngb-toast-message > section[data-type='warning'] {
+  border-color: var(--ngb-color-warning-border);
+  background: var(--ngb-color-warning-soft);
+  color: var(--ngb-color-warning);
+}
+
+ngb-toast-message > section[data-type='error'] {
+  border-color: var(--ngb-color-danger-border);
+  background: var(--ngb-color-danger-soft);
+  color: var(--ngb-color-danger);
+}
+
+ngb-toast-message > section button {
+  margin-inline-start: auto;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+ngb-badge-message > span,
+ngb-chip-message > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: 999px;
+  background: var(--ngb-color-canvas-subtle);
+  color: var(--ngb-color-text-subtle);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+ngb-badge-message [data-tone='success'] {
+  border-color: var(--ngb-color-success-border);
+  background: var(--ngb-color-success-soft);
+  color: var(--ngb-color-success);
+}
+
+ngb-badge-message [data-tone='warning'] {
+  border-color: var(--ngb-color-warning-border);
+  background: var(--ngb-color-warning-soft);
+  color: var(--ngb-color-warning);
+}
+
+ngb-badge-message [data-tone='danger'] {
+  border-color: var(--ngb-color-danger-border);
+  background: var(--ngb-color-danger-soft);
+  color: var(--ngb-color-danger);
+}
+
+ngb-chip-message button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+ngb-progress-message progress {
+  width: 100%;
+  height: 0.65rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  accent-color: var(--ngb-color-primary);
+}
+
+ngb-progress-message progress::-webkit-progress-bar {
+  border-radius: 999px;
+  background: var(--ngb-color-progress-track);
+}
+
+ngb-progress-message progress::-webkit-progress-value {
+  border-radius: 999px;
+  background: var(--ngb-gradient-progress);
+}
+
+ngb-progress-message progress::-moz-progress-bar {
+  border-radius: 999px;
+  background: var(--ngb-gradient-progress);
+}
+ngb-spinner-message .spinner {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+ngb-spinner-message .spinner > span {
+  width: 100%;
+  height: 100%;
+  border: 0.2rem solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: ngb-spin 0.7s linear infinite;
+}
+
+@keyframes ngb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+ngb-skeleton-message .skeleton {
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+ngb-skeleton-message .skeleton > span {
+  display: block;
+  height: 1rem;
+  background: color-mix(
+    in srgb,
+    var(--ngb-color-text) 12%,
+    var(--ngb-color-canvas)
+  );
+  border-radius: 0.25rem;
+}
+
+ngb-skeleton-message .skeleton > span:last-child {
+  width: 70%;
+}

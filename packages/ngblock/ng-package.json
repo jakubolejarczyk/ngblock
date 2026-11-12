@@ -4,7 +4,7 @@
   "assets": [
     {
       "glob": "styles.css",
-      "input": "src",
+      "input": ".generated",
       "output": "."
     },
     {

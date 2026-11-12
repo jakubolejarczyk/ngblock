@@ -1,0 +1,179 @@
+ngb-menubar-menu nav > ul,
+ngb-breadcrumb-menu ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+ngb-menubar-menu li {
+  display: inline-flex;
+}
+
+ngb-menubar-menu button,
+ngb-menubar-menu a,
+ngb-breadcrumb-menu a {
+  color: var(--ngb-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+ngb-menubar-menu button {
+  min-height: auto;
+  padding: 0.4rem 0.65rem;
+}
+
+ngb-breadcrumb-menu li {
+  color: var(--ngb-color-muted);
+  font-size: 0.875rem;
+}
+
+ngb-breadcrumb-menu li + li::before {
+  margin-inline-end: 0.5rem;
+  color: var(--ngb-color-placeholder);
+  content: '/';
+}
+
+ngb-breadcrumb-menu [aria-current='page'] {
+  color: var(--ngb-color-text);
+  font-weight: 600;
+}
+
+ngb-dropdown-menu [role='menu'],
+ngb-popover-overlay [role='region'] {
+  position: absolute;
+  z-index: 20;
+  display: grid;
+  min-width: 12rem;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-canvas);
+  box-shadow: var(--ngb-shadow-md);
+}
+
+ngb-dropdown-menu [role='menu'] button {
+  width: 100%;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.65rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+ngb-dropdown-menu [role='menu'] button:hover {
+  background: var(--ngb-color-primary-soft);
+}
+
+ngb-dropdown-menu > div,
+ngb-popover-overlay > span {
+  position: relative;
+  display: inline-block;
+}
+
+ngb-tabs-menu [role='tablist'] {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--ngb-color-border);
+}
+
+ngb-tabs-menu [role='tab'] {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--ngb-radius-sm) var(--ngb-radius-sm) 0 0;
+  background: transparent;
+  color: var(--ngb-color-muted);
+}
+
+ngb-tabs-menu [role='tab'][aria-selected='true'] {
+  border-bottom-color: var(--ngb-color-primary);
+  color: var(--ngb-color-primary);
+}
+
+ngb-tabs-menu [role='tabpanel'] {
+  padding: 1rem 0;
+}
+
+ngb-accordion-menu section {
+  border-bottom: 1px solid var(--ngb-color-border);
+}
+
+ngb-accordion-menu h3 {
+  margin: 0;
+}
+
+ngb-accordion-menu h3 button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+ngb-accordion-menu section > div {
+  padding: 0.5rem 0.9rem 1rem;
+  color: var(--ngb-color-muted);
+}
+
+ngb-steps-menu ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+ngb-steps-menu button {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.8125rem;
+}
+
+ngb-steps-menu [aria-current='step'] {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-primary);
+}
+
+ngb-split-button-control > div {
+  display: inline-flex;
+  position: relative;
+}
+
+ngb-split-button-control > div > button:first-child {
+  border-radius: var(--ngb-radius-sm) 0 0 var(--ngb-radius-sm);
+}
+
+ngb-split-button-control > div > button:nth-child(2) {
+  border-inline-start: 1px solid var(--ngb-color-overlay-divider);
+  border-radius: 0 var(--ngb-radius-sm) var(--ngb-radius-sm) 0;
+  background: var(--ngb-color-primary);
+  color: var(--ngb-color-on-primary);
+}
+
+ngb-split-button-control [role='menu'] {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  display: grid;
+  min-width: 12rem;
+  gap: 0.25rem;
+  padding: 0.4rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-canvas);
+  box-shadow: var(--ngb-shadow-md);
+}
+
+ngb-split-button-control [role='menu'] button {
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+ngb-split-button-control [role='menu'] button:hover {
+  background: var(--ngb-color-primary-soft);
+}

@@ -1,0 +1,14 @@
+@media (prefers-reduced-motion: reduce) {
+  ngb-spinner-message .spinner > span {
+    animation-duration: 2s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ngb-button-text-control button,
+  ngb-button-icon-control button,
+  ngb-toggle-button-control button,
+  ngb-link-control a {
+    transition: none;
+  }
+}

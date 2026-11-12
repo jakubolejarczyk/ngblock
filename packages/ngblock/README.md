@@ -54,6 +54,8 @@ Add the optional component theme to your Angular application's global styles:
 The theme is opt-in and styles component hosts and their native controls. It
 does not set page-wide typography or backgrounds. Customize its `--ngb-*` CSS
 variables after the import, globally or on an element wrapping your components.
+The SCSS source is organized into feature partials under `src/styles/` and
+assembled by `src/styles.scss`; the package build compiles it to `styles.css`.
 For example:
 
 ```css

@@ -1,0 +1,83 @@
+ngb-button-text-control button,
+ngb-button-icon-control button,
+ngb-toggle-button-control button,
+ngb-button-group-control button,
+ngb-split-button-control button,
+ngb-link-control a,
+ngb-paginator-data button,
+ngb-carousel-data button,
+ngb-rating-form button,
+ngb-password-form button,
+ngb-dropdown-menu > div > button,
+ngb-dropdown-menu [role='menu'] button,
+ngb-responsive-navigation-menu .menu-toggle,
+ngb-accordion-menu h3 button,
+ngb-tabs-menu [role='tab'],
+ngb-steps-menu button,
+ngb-menubar-menu button {
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-sm);
+  background: var(--ngb-color-canvas);
+  color: var(--ngb-color-text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+ngb-button-text-control button,
+ngb-button-group-control button:first-child,
+ngb-split-button-control > div > button:first-child {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary);
+  color: var(--ngb-color-on-primary);
+}
+
+ngb-button-text-control button:hover:not(:disabled),
+ngb-button-group-control button:first-child:hover:not(:disabled),
+ngb-split-button-control > div > button:first-child:hover:not(:disabled) {
+  border-color: var(--ngb-color-primary-hover);
+  background: var(--ngb-color-primary-hover);
+}
+
+ngb-button-icon-control button,
+ngb-rating-form button,
+ngb-split-button-control > div > button[aria-label='More actions'] {
+  display: inline-grid;
+  min-width: 2.5rem;
+  padding-inline: 0.7rem;
+  place-items: center;
+}
+
+ngb-button-icon-control button {
+  font-size: 1.2rem;
+}
+
+ngb-button-text-control button:active:not(:disabled),
+ngb-button-icon-control button:active:not(:disabled),
+ngb-toggle-button-control button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+ngb-toggle-button-control button[aria-pressed='true'] {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-primary);
+}
+
+ngb-rating-form button {
+  min-width: 2.25rem;
+  padding-inline: 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--ngb-color-rating);
+  font-size: 1.4rem;
+}
