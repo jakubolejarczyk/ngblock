@@ -1,9 +1,13 @@
 export { AvatarDataSmartComponent } from './avatar/avatar.data.smart';
 export { CarouselDataSmartComponent } from './carousel/carousel.data.smart';
+export { DataViewDataSmartComponent } from './data-view/data-view.data.smart';
 export { EmptyStateDataSmartComponent } from './empty-state/empty-state.data.smart';
 export { ImageDataSmartComponent } from './image/image.data.smart';
 export { ListDataSmartComponent } from './list/list.data.smart';
+export { OrderListDataSmartComponent } from './order-list/order-list.data.smart';
 export { PaginatorDataSmartComponent } from './paginator/paginator.data.smart';
+export { PickListDataSmartComponent } from './pick-list/pick-list.data.smart';
 export { TableDataSmartComponent } from './table/table.data.smart';
 export { TimelineDataSmartComponent } from './timeline/timeline.data.smart';
 export { TreeDataSmartComponent } from './tree/tree.data.smart';
+export { VirtualScrollerDataSmartComponent } from './virtual-scroller/virtual-scroller.data.smart';

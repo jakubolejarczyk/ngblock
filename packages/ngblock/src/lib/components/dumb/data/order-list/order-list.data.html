@@ -1,0 +1,23 @@
+<ol [attr.aria-label]="label()">
+  @for (item of items(); track $index; let index = $index) {
+  <li>
+    <span>{{ item }}</span>
+    <button
+      type="button"
+      [attr.aria-label]="'Move ' + item + ' up'"
+      [disabled]="index === 0"
+      (click)="move(index, -1)"
+    >
+      Move up
+    </button>
+    <button
+      type="button"
+      [attr.aria-label]="'Move ' + item + ' down'"
+      [disabled]="index === items().length - 1"
+      (click)="move(index, 1)"
+    >
+      Move down
+    </button>
+  </li>
+  }
+</ol>

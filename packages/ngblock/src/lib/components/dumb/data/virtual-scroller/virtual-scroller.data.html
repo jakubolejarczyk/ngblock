@@ -1,0 +1,16 @@
+<div
+  class="viewport"
+  role="list"
+  tabindex="0"
+  [attr.aria-label]="label()"
+  [style.max-height]="maxHeight()"
+  (scroll)="onScroll($event)"
+>
+  <div aria-hidden="true" [style.height.px]="topSpace()"></div>
+  @for (item of visibleItems(); track $index; let index = $index) {
+  <div role="listitem" [style.height.px]="safeItemHeight()">
+    {{ items()[windowStartIndex() + index] }}
+  </div>
+  }
+  <div aria-hidden="true" [style.height.px]="bottomSpace()"></div>
+</div>

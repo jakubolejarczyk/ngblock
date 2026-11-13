@@ -1,6 +1,7 @@
 export * from './accordion/accordion.menu';
 export * from './breadcrumb/breadcrumb.menu';
 export * from './context-menu/context-menu.menu';
+export * from './command-menu/command-menu.menu';
 export * from './dropdown-menu/dropdown-menu.menu';
 export * from './menubar/menubar.menu';
 export * from './responsive-navigation/responsive-navigation.menu';

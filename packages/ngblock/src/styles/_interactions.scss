@@ -11,6 +11,8 @@ ngb-link-control a:hover {
 
 ngb-button-icon-control button:focus-visible,
 ngb-button-text-control button:focus-visible,
+ngb-button-base-control button:focus-visible,
+ngb-button-base-control-smart button:focus-visible,
 ngb-toggle-button-control button:focus-visible,
 ngb-link-control a:focus-visible,
 ngb-button-group-control button:focus-visible,
@@ -25,13 +27,27 @@ ngb-responsive-navigation-menu a:focus-visible,
 ngb-accordion-menu button:focus-visible,
 ngb-tabs-menu button:focus-visible,
 ngb-steps-menu button:focus-visible,
-ngb-menubar-menu button:focus-visible {
+ngb-menubar-menu button:focus-visible,
+ngb-speed-dial-control button:focus-visible,
+ngb-speed-dial-control-smart button:focus-visible,
+ngb-select-button-form button:focus-visible,
+ngb-select-button-form-smart button:focus-visible,
+ngb-data-view button:focus-visible,
+ngb-data-view-smart button:focus-visible,
+ngb-order-list-data button:focus-visible,
+ngb-order-list-data-smart button:focus-visible,
+ngb-pick-list-data button:focus-visible,
+ngb-pick-list-data-smart button:focus-visible,
+ngb-command-menu button:focus-visible,
+ngb-command-menu-smart button:focus-visible {
   outline: none;
   box-shadow: var(--ngb-focus-ring);
 }
 
 ngb-button-icon-control button:disabled,
 ngb-button-text-control button:disabled,
+ngb-button-base-control button:disabled,
+ngb-button-base-control-smart button:disabled,
 ngb-toggle-button-control button:disabled,
 ngb-link-control a[aria-disabled='true'],
 ngb-button-group-control button:disabled,
@@ -44,7 +60,42 @@ ngb-dropdown-menu button:disabled,
 ngb-accordion-menu button:disabled,
 ngb-tabs-menu button:disabled,
 ngb-steps-menu button:disabled,
-ngb-menubar-menu button:disabled {
+ngb-menubar-menu button:disabled,
+ngb-speed-dial-control button:disabled,
+ngb-speed-dial-control-smart button:disabled,
+ngb-select-button-form button:disabled,
+ngb-select-button-form-smart button:disabled,
+ngb-data-view button:disabled,
+ngb-data-view-smart button:disabled,
+ngb-order-list-data button:disabled,
+ngb-order-list-data-smart button:disabled,
+ngb-pick-list-data button:disabled,
+ngb-pick-list-data-smart button:disabled,
+ngb-command-menu button:disabled,
+ngb-command-menu-smart button:disabled {
   opacity: 0.48;
   cursor: not-allowed;
+}
+
+ngb-speed-dial-control > div {
+  position: relative;
+  display: inline-grid;
+  justify-items: end;
+  gap: 0.5rem;
+}
+
+ngb-speed-dial-control [role='menu'] {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0.4rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-canvas);
+  box-shadow: var(--ngb-shadow-md);
+  list-style: none;
+}
+
+ngb-speed-dial-control [role='menuitem'] {
+  width: 100%;
 }

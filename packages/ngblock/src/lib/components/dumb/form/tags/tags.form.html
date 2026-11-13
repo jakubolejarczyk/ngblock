@@ -1,0 +1,27 @@
+<div class="tags-field">
+  <span class="tags-label">{{ label() }}</span>
+  <ul aria-label="Selected values">
+    @for (item of value(); track item) {
+    <li>
+      {{ item }}
+      <button
+        type="button"
+        [attr.aria-label]="'Remove ' + item"
+        [disabled]="disabled()"
+        (click)="removeValue(item)"
+      >
+        Remove
+      </button>
+    </li>
+    }
+    <li class="tags-entry">
+      <input
+        type="text"
+        [attr.aria-label]="label()"
+        [placeholder]="placeholder()"
+        [disabled]="disabled()"
+        (keydown.enter)="addValue($event)"
+      />
+    </li>
+  </ul>
+</div>

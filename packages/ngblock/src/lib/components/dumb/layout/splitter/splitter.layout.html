@@ -1,0 +1,22 @@
+<div
+  class="splitter"
+  [attr.data-orientation]="orientation()"
+  [style.--ngb-split-position]="boundedPosition() + '%'"
+>
+  <div class="split-pane" data-pane="primary">
+    <ng-content select="[primary]" />
+  </div>
+  <input
+    type="range"
+    min="10"
+    max="90"
+    [value]="position()"
+    role="separator"
+    [attr.aria-orientation]="orientation() === 'horizontal' ? 'vertical' : 'horizontal'"
+    aria-label="Resize panels"
+    (input)="onPositionChange($event)"
+  />
+  <div class="split-pane" data-pane="secondary">
+    <ng-content select="[secondary]" />
+  </div>
+</div>

@@ -7,12 +7,15 @@ export { FormFieldFormSmartComponent } from './form-field/form-field.form.smart'
 export { ListboxFormSmartComponent } from './listbox/listbox.form.smart';
 export { MultiSelectFormSmartComponent } from './multi-select/multi-select.form.smart';
 export { NumberFormSmartComponent } from './number/number.form.smart';
+export { OtpFormSmartComponent } from './otp/otp.form.smart';
 export { PasswordFormSmartComponent } from './password/password.form.smart';
 export { RadioGroupFormSmartComponent } from './radio-group/radio-group.form.smart';
 export { RatingFormSmartComponent } from './rating/rating.form.smart';
 export { SelectFormSmartComponent } from './select/select.form.smart';
+export { SelectButtonFormSmartComponent } from './select-button/select-button.form.smart';
 export { SliderFormSmartComponent } from './slider/slider.form.smart';
 export { SwitchFormSmartComponent } from './switch/switch.form.smart';
 export { TextFieldFormSmartComponent } from './text-field/text-field.form.smart';
 export { TextareaFormSmartComponent } from './textarea/textarea.form.smart';
+export { TagsFormSmartComponent } from './tags/tags.form.smart';
 export { TimePickerFormSmartComponent } from './time-picker/time-picker.form.smart';

@@ -1,0 +1,36 @@
+<div class="pick-list">
+  <section aria-label="Available items">
+    <h3>Available</h3>
+    <ul>
+      @for (item of source(); track item) {
+      <li>
+        <span>{{ item }}</span>
+        <button
+          type="button"
+          [attr.aria-label]="'Move ' + item + ' to selected'"
+          (click)="move(item, 'source')"
+        >
+          Add
+        </button>
+      </li>
+      }
+    </ul>
+  </section>
+  <section aria-label="Selected items">
+    <h3>Selected</h3>
+    <ul>
+      @for (item of target(); track item) {
+      <li>
+        <span>{{ item }}</span>
+        <button
+          type="button"
+          [attr.aria-label]="'Remove ' + item + ' from selected'"
+          (click)="move(item, 'target')"
+        >
+          Remove
+        </button>
+      </li>
+      }
+    </ul>
+  </section>
+</div>

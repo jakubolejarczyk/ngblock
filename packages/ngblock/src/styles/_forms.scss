@@ -1,4 +1,5 @@
 ngb-text-field-form label,
+ngb-otp-form label,
 ngb-password-form label,
 ngb-number-form label,
 ngb-date-picker-form label,
@@ -16,6 +17,7 @@ ngb-file-upload-form label {
   font-weight: 600;
 }
 
+ngb-otp-form input,
 ngb-text-field-form input,
 ngb-password-form input,
 ngb-number-form input,
@@ -42,6 +44,7 @@ ngb-file-upload-form input {
 }
 
 ngb-text-field-form input:focus,
+ngb-otp-form input:focus,
 ngb-password-form input:focus,
 ngb-number-form input:focus,
 ngb-date-picker-form input:focus,
@@ -64,6 +67,91 @@ ngb-number-form input::placeholder,
 ngb-textarea-form textarea::placeholder,
 ngb-autocomplete-form input::placeholder {
   color: var(--ngb-color-placeholder);
+}
+
+ngb-tags-form input:focus {
+  border-color: var(--ngb-color-primary);
+  outline: none;
+  box-shadow: var(--ngb-focus-ring);
+}
+
+ngb-tags-form .tags-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+ngb-tags-form .tags-label {
+  color: var(--ngb-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+ngb-tags-form ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.35rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-sm);
+  list-style: none;
+}
+
+ngb-tags-form li:not(.tags-entry) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ngb-radius-sm);
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-text);
+}
+
+ngb-tags-form li button {
+  min-height: auto;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.75rem;
+}
+
+ngb-tags-form .tags-entry {
+  flex: 1 1 9rem;
+}
+
+ngb-tags-form input {
+  min-height: 2rem;
+  width: 100%;
+  padding: 0.3rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ngb-color-text);
+  font: inherit;
+  box-shadow: none;
+}
+
+ngb-select-button-form fieldset {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0;
+  border: 0;
+}
+
+ngb-select-button-form legend {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+ngb-select-button-form [role='group'] {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+ngb-select-button-form button[aria-pressed='true'] {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-primary);
 }
 
 ngb-text-field-form input:disabled,

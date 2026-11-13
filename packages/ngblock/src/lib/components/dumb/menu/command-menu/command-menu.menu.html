@@ -1,0 +1,23 @@
+<section role="search" [attr.aria-label]="label()">
+  <input
+    type="search"
+    [attr.aria-label]="'Search ' + label()"
+    placeholder="Search commands"
+    [value]="query()"
+    (input)="onQueryChange($event)"
+  />
+  <ul [attr.aria-label]="label()">
+    @for (item of matchingItems(); track $index) {
+    <li>
+      <button type="button" (click)="selected.emit(item)">
+        <span>{{ item.label }}</span>
+        @if (item.description) {
+        <small>{{ item.description }}</small>
+        }
+      </button>
+    </li>
+    } @empty {
+    <li aria-live="polite">No matching commands</li>
+    }
+  </ul>
+</section>

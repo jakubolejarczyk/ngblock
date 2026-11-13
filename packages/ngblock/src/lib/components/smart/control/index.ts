@@ -2,6 +2,7 @@ export { ButtonGroupSmartComponent } from './button-group/button-group.control.s
 export { CheckboxSmartComponent } from './checkbox/checkbox.control.smart';
 export { LinkSmartComponent } from './link/link.control.smart';
 export { SplitButtonSmartComponent } from './split-button/split-button.control.smart';
+export { SpeedDialSmartComponent } from './speed-dial/speed-dial.control.smart';
 export { ToggleButtonSmartComponent } from './toggle-button/toggle-button.control.smart';
 export { ButtonBaseSmartComponent } from './button/button-base/button-base.control.smart';
 export { ButtonIconSmartComponent } from './button/button-icon/button-icon.control.smart';

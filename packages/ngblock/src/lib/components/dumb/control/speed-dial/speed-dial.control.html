@@ -1,0 +1,22 @@
+<div>
+  <button
+    type="button"
+    [attr.aria-expanded]="open()"
+    [attr.aria-label]="label()"
+    aria-haspopup="menu"
+    (click)="openChange.emit(!open())"
+  >
+    {{ open() ? 'Close' : 'Actions' }}
+  </button>
+  @if (open()) {
+  <ul role="menu" [attr.aria-label]="label()">
+    @for (action of actions(); track action.value) {
+    <li role="none">
+      <button type="button" role="menuitem" (click)="selected.emit(action)">
+        {{ action.label }}
+      </button>
+    </li>
+    }
+  </ul>
+  }
+</div>

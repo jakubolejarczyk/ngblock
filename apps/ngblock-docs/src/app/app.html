@@ -1,0 +1,247 @@
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="ngblock documentation home">
+    <span class="brand-mark" aria-hidden="true">n</span>
+    <span>ngblock</span>
+    <span class="brand-label">Documentation</span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="#getting-started">Getting started</a>
+    <a href="#component-reference">Components</a>
+    <a
+      href="https://github.com/jakubolejarczyk/ngblock"
+      target="_blank"
+      rel="noreferrer"
+    >
+      GitHub
+    </a>
+  </nav>
+</header>
+
+<main id="top" class="page-shell">
+  <section class="hero">
+    <p class="eyebrow">Angular component library</p>
+    <h1>Build interfaces with ngblock</h1>
+    <p class="hero-copy">
+      Standalone building blocks for forms, data, navigation, layout, and
+      everyday product interfaces.
+    </p>
+    <div class="hero-actions">
+      <a class="primary-link" href="#getting-started">Get started</a>
+      <a class="secondary-link" href="#component-reference"
+        >Explore components</a
+      >
+    </div>
+    <div class="hero-stat">
+      <strong>{{ catalog().length || 76 }}</strong>
+      <span>component families with dumb and smart variants</span>
+    </div>
+  </section>
+
+  <section id="getting-started" class="docs-section getting-started">
+    <div class="section-heading">
+      <p class="eyebrow">Start here</p>
+      <h2>Install and use ngblock</h2>
+      <p>
+        Import standalone components directly into your Angular application. The
+        theme is optional and can be customized with CSS variables.
+      </p>
+    </div>
+
+    <div class="quick-start-grid">
+      <article class="quick-card">
+        <span class="step-number">01</span>
+        <h3>Install</h3>
+        <pre><code>npm install ngblock</code></pre>
+        <p>Use the package from any Angular standalone component.</p>
+      </article>
+      <article class="quick-card">
+        <span class="step-number">02</span>
+        <h3>Add the optional theme</h3>
+        <pre><code>"styles": [
+  "node_modules/ngblock/styles.css",
+  "src/styles.css"
+]</code></pre>
+        <p>Override <code>--ngb-*</code> tokens after the stylesheet import.</p>
+      </article>
+    </div>
+
+    <div class="example-card">
+      <div class="example-copy">
+        <p class="eyebrow">Standalone example</p>
+        <h3>Bind values and handle events</h3>
+        <p>
+          Dumb components render the UI and emit user actions. Smart wrappers
+          coordinate common stateful behavior. Keep application data in your own
+          component.
+        </p>
+        <pre><code>{{ usageExample }}</code></pre>
+      </div>
+      <div class="live-example">
+        <p class="live-label">Live example</p>
+        <ngb-text-field-form
+          label="Name"
+          [value]="sampleName()"
+          (changed)="sampleName.set($event)"
+        />
+        <ngb-button-text-control (clicked)="saveProfile()">
+          Save profile
+        </ngb-button-text-control>
+        <p class="save-status" aria-live="polite">
+          Saved {{ saveCount() }} times
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="component-reference" class="docs-section reference-section">
+    <div class="section-heading">
+      <p class="eyebrow">Browse the library</p>
+      <h2>Component reference</h2>
+      <p>
+        Search by name, selector, behavior, input, or event. Each entry is
+        sourced from the package API reference.
+      </p>
+    </div>
+
+    @if (loadError()) {
+    <p class="error-message" role="alert">{{ loadError() }}</p>
+    } @else if (isLoading()) {
+    <p class="loading-message" role="status">Loading components…</p>
+    } @else {
+    <div class="reference-layout">
+      <aside class="component-browser" aria-label="Component navigation">
+        <ngb-text-field-form
+          class="search-control"
+          label="Search components"
+          type="search"
+          placeholder="Try “dialog” or “changed”"
+          [value]="search()"
+          (changed)="search.set($event)"
+        />
+
+        <div class="category-list" aria-label="Filter by category">
+          @for (category of categories(); track category) {
+          <ngb-button-text-control
+            class="category-button"
+            [class.selected]="selectedCategory() === category"
+            (clicked)="selectCategory(category)"
+          >
+            <span>{{ category }}</span>
+            <span class="category-count">{{ countCategory(category) }}</span>
+          </ngb-button-text-control>
+          }
+        </div>
+
+        <p class="result-count">{{ filteredComponents().length }} components</p>
+        <div class="component-list">
+          @for (component of filteredComponents(); track component.selector) {
+          <ngb-button-text-control
+            class="component-button"
+            [class.selected]="activeComponent().selector === component.selector"
+            (clicked)="selectComponent(component.selector)"
+          >
+            <span>{{ component.name }}</span>
+            <code>{{ component.selector }}</code>
+          </ngb-button-text-control>
+          } @empty {
+          <p class="empty-state">No components match this search.</p>
+          }
+        </div>
+      </aside>
+
+      <article class="component-detail">
+        @if (activeComponent(); as component) {
+        <header class="component-heading">
+          <p class="eyebrow">{{ component.category }} component</p>
+          <h3>{{ component.name }}</h3>
+          <dl class="selector-pair" aria-label="Component selectors">
+            <div>
+              <dt>Dumb component</dt>
+              <dd><code>{{ component.dumbSelector }}</code></dd>
+            </div>
+            <div>
+              <dt>Smart component</dt>
+              <dd><code>{{ component.smartSelector }}</code></dd>
+            </div>
+          </dl>
+        </header>
+
+        <p class="component-description">{{ component.description }}</p>
+
+        <section class="detail-block preview-block">
+          <div class="preview-toolbar">
+            <div>
+              <h4>Live preview</h4>
+              <p>Rendered from the ngblock component itself.</p>
+            </div>
+            <div
+              class="preview-variants"
+              role="group"
+              aria-label="Preview variant"
+            >
+              <ngb-button-text-control (clicked)="selectPreviewVariant('dumb')">
+                Show dumb
+              </ngb-button-text-control>
+              <ngb-button-text-control
+                (clicked)="selectPreviewVariant('smart')"
+              >
+                Show smart
+              </ngb-button-text-control>
+            </div>
+          </div>
+          <p class="preview-state">
+            Showing the {{ previewVariant() }} implementation.
+          </p>
+          <div class="preview-frame">
+            @if (activePreview(); as preview) {
+            <ng-container
+              [ngComponentOutlet]="preview.component"
+              [ngComponentOutletInputs]="preview.inputs"
+              [ngComponentOutletContent]="previewContent()"
+            />
+            } @else {
+            <p class="empty-state">
+              A preview is not available for this component.
+            </p>
+            }
+          </div>
+        </section>
+
+        <section class="detail-block">
+          <h4>Selector markup</h4>
+          <div class="selector-examples">
+            <div>
+              <p>Dumb component</p>
+              <pre><code>{{ selectorMarkup(component.dumbSelector) }}</code></pre>
+            </div>
+            <div>
+              <p>Smart component</p>
+              <pre><code>{{ selectorMarkup(component.smartSelector) }}</code></pre>
+            </div>
+          </div>
+          <p class="detail-note">
+            Bind the required inputs and outputs listed below. Use the Getting
+            Started example as a complete Angular template pattern.
+          </p>
+        </section>
+
+        <section class="detail-block">
+          <h4>Inputs and events</h4>
+          <p class="api-details">{{ component.inputsAndEvents }}</p>
+        </section>
+        } @else {
+        <div class="empty-detail">
+          <h3>Select a component</h3>
+          <p>Choose an entry from the list to view its API reference.</p>
+        </div>
+        }
+      </article>
+    </div>
+    }
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>ngblock · Standalone Angular UI components</p>
+  <a href="#top">Back to top ↑</a>
+</footer>

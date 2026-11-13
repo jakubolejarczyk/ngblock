@@ -1,0 +1,28 @@
+<section>
+  <div role="group" aria-label="Data view">
+    <button
+      type="button"
+      [attr.aria-pressed]="view() === 'list'"
+      (click)="viewChange.emit('list')"
+    >
+      List
+    </button>
+    <button
+      type="button"
+      [attr.aria-pressed]="view() === 'grid'"
+      (click)="viewChange.emit('grid')"
+    >
+      Grid
+    </button>
+  </div>
+  <ul [attr.data-view]="view()">
+    @for (item of items(); track item.id) {
+    <li>
+      <h3>{{ item.title }}</h3>
+      @if (item.description) {
+      <p>{{ item.description }}</p>
+      }
+    </li>
+    }
+  </ul>
+</section>

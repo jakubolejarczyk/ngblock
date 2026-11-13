@@ -145,3 +145,97 @@ ngb-tree-data [role='group'] {
 ngb-tree-data [role='treeitem'] {
   padding-block: 0.2rem;
 }
+
+ngb-data-view > section > div[role='group'] {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+ngb-data-view button[aria-pressed='true'] {
+  border-color: var(--ngb-color-primary);
+  background: var(--ngb-color-primary-soft);
+  color: var(--ngb-color-primary);
+}
+
+ngb-data-view ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+ngb-data-view ul[data-view='grid'] {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+ngb-data-view li {
+  padding: 1rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-canvas);
+}
+
+ngb-data-view h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+ngb-data-view p {
+  margin: 0.4rem 0 0;
+  color: var(--ngb-color-muted);
+}
+
+ngb-order-list-data ol,
+ngb-pick-list-data ul {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ngb-order-list-data li,
+ngb-pick-list-data li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-sm);
+}
+
+ngb-order-list-data button,
+ngb-pick-list-data button {
+  min-height: 2rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8rem;
+}
+
+ngb-pick-list-data .pick-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+ngb-pick-list-data h3 {
+  font-size: 0.95rem;
+}
+
+ngb-virtual-scroller-data .viewport {
+  overflow: auto;
+  border: 1px solid var(--ngb-color-border);
+  border-radius: var(--ngb-radius-md);
+  background: var(--ngb-color-canvas);
+  overscroll-behavior: contain;
+}
+
+ngb-virtual-scroller-data [role='listitem'] {
+  display: flex;
+  align-items: center;
+  padding-inline: 0.75rem;
+  border-bottom: 1px solid var(--ngb-color-table-border);
+}
